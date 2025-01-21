@@ -136,6 +136,7 @@ header .logo img {
 .our-benefits {
   padding: 50px 20px;
   background-color: #fff;
+  display:flex;
 }
 
 .benefits-header {
