@@ -21,12 +21,43 @@ header {
 header .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
+header .header-button img{
+	height:3.4em;
+	width:9.5em;
+	border-style:none;
+}
+header .header-button button{
+	top:10%;
+	border-style:none; }
+
+header .logo{
+	display:flex;
+	font-size:1em;
+	text-decoration:none;
+}
+header a {	text-decoration:none;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+header .logo span {
+	font-weight:bold;
+		font-size:1.2em;
+		text-shadow: 0.1em 0.1em 0.1em gray;
+}
+header .logo a #rifq {color:#1d1c1a;}
+header .logo a #clinic {color:#f5b90d;}
+
+
 header .logo img {
-height:2em;
-width:2em;
-box-shadow: 0.2em 0.2em;}
+height:3.4em;
+width:3.4em;
+margin-right:0.5em;
+}
 
 /* Welcome Hero */
 .welcome-hero {
