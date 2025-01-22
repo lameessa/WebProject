@@ -22,13 +22,20 @@ header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow:visible;
 }
 
 header .header-button img{
 	height:3.4em;
 	width:9.5em;
 	border-style:none;
+	transition: transform 0.3s ease;
 }
+
+header img:hover{
+transform: scale(1.1);
+}
+
 header .header-button button{
 	top:10%;
 	border-style:none; }
@@ -37,7 +44,14 @@ header .logo{
 	display:flex;
 	font-size:1em;
 	text-decoration:none;
+	transition: transform 0.3s ease;
 }
+
+header .logo:hover{
+	transform: scale(1.1);
+}
+
+
 header a {	text-decoration:none;
 	display:flex;
 	justify-content:center;
