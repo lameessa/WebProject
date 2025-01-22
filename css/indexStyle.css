@@ -14,8 +14,8 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #007bff;
   padding: 10px 20px;
+  border-bottom:0.1em solid #ddd;
 }
 
 header .container {
@@ -24,8 +24,9 @@ header .container {
 }
 
 header .logo img {
-  max-width: 120px;
-}
+height:2em;
+width:2em;
+box-shadow: 0.2em 0.2em;}
 
 /* Welcome Hero */
 .welcome-hero {
