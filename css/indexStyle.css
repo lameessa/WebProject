@@ -228,6 +228,7 @@ margin-right:0.5em;
   font-weight: bold;
   text-align: center;
 	transition: transform 0.3s ease;
+	border-style:none;
 }
 
 .login-button:hover {

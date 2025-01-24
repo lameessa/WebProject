@@ -93,12 +93,12 @@
 			<div class="right-half">
 				<h2>Welcome to Your Pet's<br>Health Portal!</h2>
 				<p>Log in to access your account and view your pet's <br> medical history, upcoming appointments, and personalized care recommendations.</p>
-				<a href="html/LogIn.html" class="login-button">Login</a>
+				<button class="login-button">Login</button>
 				<a href="html/SignUp.html" class="signup-link">Don't have an account? Sign up here.</a>
 			</div>
 		</section>
 		<!--Log in split end-->
-		
+
 
 		</main>
 		<!--main end-->
@@ -155,4 +155,23 @@
 			<!--/ End Copyright -->
 		</footer>
 		<!--/ End Footer Area -->
+		
+		<script>
+			// Redirect when "Login/Signup" button is clicked
+			document.getElementById("login-signup-button").addEventListener("click", () => {
+				window.location.href = "LogIn.html";
+			});
+
+			// Redirect when "Book Appointment" button is clicked
+			document.getElementById("appointment-button").addEventListener("click", () => {
+				window.location.href = "Appointment.html"; 
+			});
+
+			// Redirect when "Login" button is clicked in the split-section
+			const loginButton = document.querySelector(".login-button");
+			loginButton.addEventListener("click", () => {
+				window.location.href = "LogIn.html"; 
+			});
+		</script>
+		
 	</body>
