@@ -1,0 +1,221 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../images/iconsBackground.PNG') repeat center center, white; 
+    background-size: contain; /* Adjust the size to fit the screen */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+header {
+    padding: 10px 0;
+    border-bottom:0.1em solid #ddd;
+    width: 100%;
+  }
+  
+  header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem; 
+  }
+  
+  header .header-button img{
+      height:3.4em;
+      width:9.5em;
+      border-style:none;
+  }
+  header .header-button button{
+      top:10%;
+      border-style:none; }
+  
+  header .logo{
+      display:flex;
+      font-size:1em;
+      text-decoration:none;
+  }
+  header a {	text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+  }
+  
+  header .logo span {
+      font-weight:bold;
+          font-size:1.2em;
+          text-shadow: 0.1em 0.1em 0.1em gray;
+  }
+  header .logo a #rifq {color:#1d1c1a;}
+  header .logo a #clinic {color:#f5b90d;}
+  
+  
+  header .logo img {
+  height:3.4em;
+  width:3.4em;
+  margin-right:0.5em;
+  }
+  
+
+.login-container {
+ margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribute space equally */
+    align-items: center; /* Align items vertically */
+    width: 80%; /* Responsive width without fixed pixels */
+    max-width: 1200px; /* Prevent excessive stretching */
+    gap: 3rem; /* Center items horizontally */
+    margin-bottom: 5rem;
+    }
+
+/* Login Form */
+.login-form{
+    background-color: #d07f00;
+    padding: 4vw;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    text-align: left;
+    width: 90%;
+    height: 40%;
+    flex: 0.8; 
+
+}
+
+
+.dog-login img{
+    width: 100%; /* Responsive scaling */
+    height: 100%;
+}
+.dog-login{
+    width: 100%; /* Responsive scaling */
+
+    flex: 1; /* Allow image section to grow equally */
+    display: flex;
+    justify-content: center; }
+.login-container h2 {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+}
+
+input, select {
+    color: white;  /* Change text color to black for visibility */
+    background-color: rgba(255, 255, 255, 0.4); /* Make background semi-transparent */
+    padding: 1rem;
+    font-size: 1rem;
+    border:none;
+    border-radius: 0.7em;
+    margin-bottom: 1.5rem;
+    outline: none;
+}
+
+button {
+    background-color: white;
+    opacity: 0.7;
+    color: #d07f00;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.footer {
+    background-color: #5c4d48;
+    color: white;
+  }
+  
+  .footer-top .container .row{
+      display:flex;
+      justify-content:space-around;
+      align-items:top;
+  }
+  
+  .footer-top span {
+      font-weight:bold;
+  }
+  
+  
+  .footer-top .container .row .col {
+      max-width:25%;
+      transition: transform 0.3s ease;
+  }
+  
+  .footer-top .container .row .col:hover {
+      transform: scale(1.025);
+  }
+  
+  .footer-top {
+      padding: 2em;
+  }
+  
+  .footer h2 {
+      text-shadow:0.1em 0.1em 0.1em #333;
+      font-size: 20px;
+      margin-bottom: 15px;
+      color:#f5b90d;
+  }
+  
+  .footer p {
+    font-size: 14px;
+    margin-bottom: 15px;
+      text-shadow:0.1em 0.1em 0.08em #333;
+  }
+  
+  .footer .social {
+      font-size: 0.9em;
+  }
+  
+  .footer .social li {
+    list-style: none;
+    margin-bottom: 0.2em;
+  }
+  
+  .footer .social img {
+      height:1em;
+      width:1em;
+      margin-right:0.3em;
+      }
+  
+  .footer .time-sidual {
+    list-style: none;
+  }
+  
+  .footer .time-sidual li {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .copyright {
+      bottom:0%;
+      text-align: center;
+      padding: 15px;
+      background-color: #332c28;
+      color: white;
+      font-size: 14px;
+  }
+  
+  .copyright span {
+      text-decoration:underline;
+      
+  }
+
+
