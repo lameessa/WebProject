@@ -1,0 +1,261 @@
+ .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero {
+            position: relative;
+            background-color: #fbbd07;
+            padding: 50px 20px;
+            color: #fff; /* النص باللون الأبيض */
+            border-radius: 0 0 50% 50%;
+        }
+
+        .hero img {
+            width: 250px;
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            color: #ddd;
+            margin: 10px 0 20px;
+        }
+
+        .hero .explore-btn {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .categories {
+            margin: 20px auto;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .categories div {
+            margin: 30px;
+            background-color: #ffda6f;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .categories div:hover {
+            transform: scale(1.1);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-image: url("b.jpeg");
+        }
+
+        .banner_main {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contactus {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+		
+
+        
+
+        .contactus label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contactus input, .contactus select, .contactus textarea, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #fdc006;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+			
+        }
+		
+		
+
+        form button:hover {
+            background-color: #444;
+        }
+
+header {
+  padding: 0.2em 0.9em;
+  border-bottom:0.1em solid #ddd;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow:visible;
+}
+
+header .header-button img{
+	height:3.7em;
+	width:10em;
+	border-style:none;
+	transition: transform 0.3s ease;
+	
+}
+
+header .header-button img:hover{
+transform: scale(1.1);
+}
+
+header .header-button button{
+	top:10%;
+	border-style:none;
+    background-color:#fff; 	
+	}
+
+header .logo{
+	display:flex;
+	text-decoration:none;
+	transition: transform 0.3s ease;
+}
+
+header .logo:hover{
+	transform: scale(1.1);
+}
+
+
+header a { text-decoration:none;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+header .logo span {
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+header .logo a #rifq {color:#1d1c1a;}
+header .logo a #clinic {color:#f5b90d;}
+
+
+header .logo img {
+height:3.2em;
+width:3.2em;
+margin-right:0.5em;
+}
+
+.footer {
+  background-color: #5c4d48;
+  color: white;
+}
+
+.footer-top .container .row{
+	display:flex;
+	justify-content:space-around;
+	align-items:top;
+}
+
+.footer-top span {
+	font-weight:bold;
+}
+
+
+.footer-top .container .row .col {
+	max-width:25%;
+	transition: transform 0.3s ease;
+}
+
+.footer-top .container .row .col:hover {
+	transform: scale(1.025);
+}
+
+.footer-top {
+	padding: 2em;
+}
+
+.footer h2 {
+	text-shadow:0.1em 0.1em 0.1em #333;
+	font-size: 20px;
+	margin-bottom: 15px;
+	color:#f5b90d;
+}
+
+.footer p {
+  font-size: 14px;
+  margin-bottom: 15px;
+	text-shadow:0.1em 0.1em 0.08em #333;
+}
+
+.footer .social {
+	font-size: 0.9em;
+}
+
+.footer .social li {
+  list-style: none;
+  margin-bottom: 0.2em;
+}
+
+.footer .social img {
+	height:1em;
+	width:1em;
+	margin-right:0.3em;
+	}
+
+.footer .time-sidual {
+  list-style: none;
+}
+
+.footer .time-sidual li {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.copyright {
+	bottom:0%;
+	text-align: center;
+	padding: 15px;
+	background-color: #332c28;
+	color: white;
+	font-size: 14px;
+}
+
+.copyright span {
+	text-decoration:underline;
+	
+}
