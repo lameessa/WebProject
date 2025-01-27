@@ -76,7 +76,6 @@ header {
     margin-bottom: 6rem; /* Centers the container horizontally */
     text-align: center;
     overflow: hidden;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 .section-title{
     font-family: 'Poppins', sans-serif;

@@ -33,19 +33,7 @@
 
             <button type="submit">Login</button>
         </form>
-        <script>
-            document.querySelector(".login-form form").addEventListener("submit", function(event) {
-                event.preventDefault();  // Prevent the default form submission
-        
-                let selectedRole = document.getElementById("role").value;
-        
-                if (selectedRole === "patient") {
-                    window.location.href = "PatientHomePage.html";
-                } else if (selectedRole === "doctor") {
-                    window.location.href = "Doctor.html";
-                } 
-            });
-        </script>
+    
         
         </div>
 
@@ -104,5 +92,6 @@
         </div>
         <!--/ End Copyright -->
     </footer>
+    <script src="../js/Login.js"></script>
 </body>
 </html>
