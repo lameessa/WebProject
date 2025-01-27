@@ -23,20 +23,18 @@ header {
     padding: 0 2rem; 
   }
   
-  header .header-button img{
-      height:3.4em;
-      width:9.5em;
-      border-style:none;
-  }
-  header .header-button button{
-      top:10%;
-      border-style:none; }
+ 
   
   header .logo{
-      display:flex;
-      font-size:1em;
-      text-decoration:none;
+    display: flex;
+    font-size: 1em;
+    text-decoration: none;
+    transition: transform 0.3s ease;
   }
+
+  header .logo:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
   header a {	text-decoration:none;
       display:flex;
       justify-content:center;
