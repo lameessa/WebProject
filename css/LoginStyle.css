@@ -44,7 +44,6 @@ header {
   header .logo span {
       font-weight:bold;
           font-size:1.2em;
-          text-shadow: 0.1em 0.1em 0.1em gray;
   }
   header .logo a #rifq {color:#1d1c1a;}
   header .logo a #clinic {color:#f5b90d;}
