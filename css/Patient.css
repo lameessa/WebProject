@@ -1,0 +1,355 @@
+body {
+    background: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center content vertically */
+    justify-content: center;
+    margin: 0;
+}
+header {
+    padding: 10px 0;
+    border-bottom:0.1em solid #ddd;
+    width: 100%;
+  }
+  
+  header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem; 
+  }
+  
+  header .header-button img{
+    height: 3.4em;
+    width: 9.5em;
+    border-style: none;
+    transition: transform 0.3s ease;
+  }
+  header .header-button img:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+  header .header-button button{
+      top:10%;
+      border-style:none; }
+  
+      header .logo {
+        display: flex;
+        font-size: 1em;
+        text-decoration: none;
+        transition: transform 0.3s ease; /* Smooth transition */
+    }
+    header .logo:hover {
+        transform: scale(1.1); /* Zoom effect on hover */
+    }
+  header a {	text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+  }
+  
+  header .logo span {
+      font-weight:bold;
+          font-size:1.2em;
+          text-shadow: 0.1em 0.1em 0.1em gray;
+  }
+  
+  header .logo a #rifq {color:#1d1c1a;}
+  header .logo a #clinic {color:#f5b90d;}
+  
+  
+  header .logo img {
+  height:3.4em;
+  width:3.4em;
+  margin-right:0.5em;
+  }
+ 
+
+
+/* Appointments table */
+.appointments-container {
+    width: 90%;
+    background-color:  #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem; /* Centers the container horizontally */
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.section-title{
+    font-family: 'Poppins', sans-serif;
+}
+.appointments-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 10px;
+
+    margin: 0; /* Center the table */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for the whole container */
+}
+
+.appointments-table th {
+    background: #d07f00;/* Table header color */
+    color: #fff;
+    font-weight: bold;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.appointments-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;    text-align: center;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.appointments-table tr:hover {
+    background: #f5f5f5;
+    transition: background 0.3s ease-in-out;
+}
+
+.status {
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.status.pending {
+    background: #ffcc00;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+}
+
+.status.confirmed {
+    background: green;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+}
+
+.action-button {
+    background: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.action-button:hover {
+    background: #0056b3;
+}
+
+/* Doctor's image styling inside the table */
+.appointments-table img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.appointments-table th, 
+.appointments-table td {
+    border-left: none;
+    border-right: none;
+}
+
+.appointments-table th:first-child, 
+.appointments-table td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.appointments-table th:last-child, 
+.appointments-table td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.appointment-actions {
+    text-align: right;  /* Aligns button to the right */
+    margin-top: 1.5rem;
+}
+
+.book-appointment {
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #d07f00;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(208, 127, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+
+.book-appointment:hover {
+    background: #b35e2a;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(208, 127, 0, 0.5);
+}
+
+
+/* patient information */
+.page-banner-area {
+    position: relative;
+    width: 100%;
+    height: 85%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow:visible;
+    border-radius: 15px;
+    margin-bottom: 7rem;
+    
+    
+}
+.page-banner-content h1{
+    font-family: 'Poppins', sans-serif;}
+
+    
+.page-banner-image img {
+    width: 100%;
+    border-radius: 15px;
+    height: 200px;
+
+}
+.page-banner-image {
+    height: 10%;
+    width: 100%;
+}
+.page-banner-content {
+    position: absolute;
+    top: 70%; /* Lower the position to show more background */
+    width: 100%;
+    height: 80%;
+    background: rgba(235, 240, 245, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.content-text {
+    max-width: 60%;
+}
+
+.content-text h1 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #0D1B2A;
+margin: 0;
+}
+
+.content-text p {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+}
+
+.patient-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    right: 30px; /* Position it inside the banner */
+    bottom: 30px; /* Adjust to stay within the banner */
+}
+
+.patient-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Footer */
+.footer {
+    background-color: #5c4d48;
+    color: white;
+  }
+  
+  .footer-top .container .row{
+      display:flex;
+      justify-content:space-around;
+      align-items:top;
+  }
+  
+  .footer-top span {
+      font-weight:bold;
+  }
+  
+  
+  .footer-top .container .row .col {
+      max-width:25%;
+      transition: transform 0.3s ease;
+  }
+  
+  .footer-top .container .row .col:hover {
+      transform: scale(1.025);
+  }
+  
+  .footer-top {
+      padding: 2em;
+  }
+  
+  .footer h2 {
+      text-shadow:0.1em 0.1em 0.1em #333;
+      font-size: 20px;
+      margin-bottom: 15px;
+      color:#f5b90d;
+  }
+  
+  .footer p {
+    font-size: 14px;
+    margin-bottom: 15px;
+      text-shadow:0.1em 0.1em 0.08em #333;
+  }
+  
+  .footer .social {
+      font-size: 0.9em;
+  }
+  
+  .footer .social li {
+    list-style: none;
+    margin-bottom: 0.2em;
+  }
+  
+  .footer .social img {
+      height:1em;
+      width:1em;
+      margin-right:0.3em;
+      }
+  
+  .footer .time-sidual {
+    list-style: none;
+  }
+  
+  .footer .time-sidual li {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .copyright {
+      bottom:0%;
+      text-align: center;
+      padding: 15px;
+      background-color: #332c28;
+      color: white;
+      font-size: 14px;
+  }
+  
+  .copyright span {
+      text-decoration:underline;
+      
+  }
