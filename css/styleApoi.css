@@ -38,10 +38,13 @@
 
         .hero .explore-btn {
             padding: 10px 20px;
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
+
+				background-color:#ffda6f;
+	color:#fff;
+	width: 12.2em;
+	height: 3.5em;
+	border-radius:0.3em;
+	transition: transform 0.3s ease;
         }
 
         .categories {
