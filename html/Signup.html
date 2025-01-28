@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="signstyle.css">
+    </head>
+    
+<body>
+
+    <header>
+        <div class="mcontainer">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        
+        <!-- Radio Buttons for Role Selection -->
+        <div class="radio-container">
+            <label>Select Role:</label>
+            <input type="radio" id="patient" name="role" value="patient">
+            <label for="patient">Patient</label>
+            <input type="radio" id="doctor" name="role" value="doctor">
+            <label for="doctor">Doctor</label>
+        </div>
+
+        <!-- Patient Form -->
+        <form id="patient-form" class="form-container">
+            <input type="text" placeholder="First Name" required><br>
+            <input type="text" placeholder="Last Name" required><br>
+            <input type="number" placeholder="National ID" required><br>
+            
+            <!-- Gender Selection -->
+            <label>Gender</label>
+            <select required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+
+            <!-- Date of Birth -->
+            <input type="date" placeholder="Date of Birth" required><br>
+            <input type="email" placeholder="Email" required><br>
+            <input type="password" placeholder="Password" required><br>
+            <button type="button" class="btn" onclick="redirectToPatient()">Register</button>
+        </form>
+
+        <!-- Doctor Form -->
+        <form id="doctor-form" class="form-container">
+            <input type="text" placeholder="First Name" required><br>
+            <input type="text" placeholder="Last Name" required><br>
+            <input type="number" placeholder="National ID" required><br>
+            <input type="file" placeholder="Upload Photo" required><br>
+            <select required>
+                <option value="general">General Medicine</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+            </select><br>
+            <input type="email" placeholder="Email" required><br>
+            <input type="password" placeholder="Password" required><br>
+            <button type="button" class="btn" onclick="redirectToDoctor()">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to show the correct form based on role selection
+        function showForm() {
+            var patientRadio = document.getElementById('patient');
+            var doctorRadio = document.getElementById('doctor');
+
+            if (patientRadio.checked) {
+                document.getElementById('patient-form').style.display = 'block';
+                document.getElementById('doctor-form').style.display = 'none';
+            } else if (doctorRadio.checked) {
+                document.getElementById('doctor-form').style.display = 'block';
+                document.getElementById('patient-form').style.display = 'none';
+            }
+        }
+
+        // Add event listeners for role selection
+        document.getElementById('patient').addEventListener('change', showForm);
+        document.getElementById('doctor').addEventListener('change', showForm);
+
+        // Redirect to the patient homepage
+        function redirectToPatient() {
+            window.location.href = "PatientHomePage.html"; // Redirect to the patient page
+        }
+
+        // Redirect to the doctor homepage
+        function redirectToDoctor() {
+            window.location.href = "Doctor.html"; // Redirect to the doctor page
+        }
+    </script>
+
+</body>
+</html>
