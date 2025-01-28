@@ -29,5 +29,19 @@
         }
     });
 	
-	function redirectToBooking() {
-window.location.href = "Appointment.html";}
+
+
+
+
+			document.getElementById("buttonBooking").addEventListener("click", () => {
+				window.location.href = "PatientHomePage.html";
+			});
+
+
+			// Redirect when "Login" button is clicked in the split-section
+			const loginButton = document.getElementById("buttonBooking");
+			loginButton.addEventListener("click", () => {
+				window.location.href = "PatientHomePage.html"; 
+			});
+
+
