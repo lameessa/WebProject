@@ -16,7 +16,7 @@
         const selectedSpecialty = specialtySelect.value;
 
         // تفريغ قائمة الأطباء القديمة
-        doctorSelect.innerHTML = '<option value="">-- Select Doctor --</option>';
+        doctorSelect.innerHTML = '<option value="">   Doctors </option>';
 
         // إذا كان التخصص مختارًا، أضف الأطباء المناسبين
         if (selectedSpecialty && doctorsBySpecialty[selectedSpecialty]) {
@@ -28,3 +28,6 @@
             });
         }
     });
+	
+	function redirectToBooking() {
+window.location.href = "Appointment.html";}
