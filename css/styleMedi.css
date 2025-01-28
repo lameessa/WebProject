@@ -165,6 +165,7 @@
             align-items: center;
             justify-content: space-between;
             overflow: visible;
+			 
         }
 
         header .header-button img {
@@ -172,7 +173,7 @@
             width: 10em;
             border-style: none;
             transition: transform 0.3s ease;
-			background-color:#fff;
+			 background-color: #fffaf3;
         }
 
         header .header-button img:hover {
@@ -183,6 +184,7 @@
             display: flex;
             text-decoration: none;
             transition: transform 0.3s ease;
+			 
         }
 
         header .logo:hover {
@@ -207,6 +209,7 @@
 
         header .logo a #clinic {
             color: #f5b90d;
+			 
         }
 
         header .logo img {
@@ -214,6 +217,7 @@
             width: 3.2em;
             margin-right: 0.5em;
             transition: transform 0.3s ease;
+			
         }
 
         header .logo img:hover {

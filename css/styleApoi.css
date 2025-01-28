@@ -16,7 +16,7 @@
         .hero {
             position: relative;
             background-color: #fbbd07;
-            padding: 50px 20px;
+            padding: 20px 20px;
             color: #fff; /* النص باللون الأبيض */
             border-radius: 0 0 50% 50%;
         }
