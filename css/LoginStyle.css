@@ -76,7 +76,21 @@ input, select {
     outline: none;
     opacity: 1;
 }
-
+select option {
+    background-color: white; /* Background for options */
+    color: black; /* Ensure text is visible */
+}
+select {
+    background-color: rgba(255, 255, 255, 0.4); /* Make background semi-transparent */
+    color: white; /* Ensure selected text is visible */
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+}
+select option:checked {
+    background-color: #d07f00; /* Match selected item background */
+    color: white; /* Keep selected text white */
+}
 button {
     background-color: white;
     opacity: 0.7;
@@ -91,7 +105,10 @@ button {
 button:hover {
     opacity: 0.8;
 }
-
+select option {
+    background-color: white; /* Background for options */
+    color: black; /* Ensure text is visible */
+}
 
 
 
