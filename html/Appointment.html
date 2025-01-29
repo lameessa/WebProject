@@ -40,44 +40,45 @@
 
     <div id="form-section" class="stats">
         <section class="banner_main">
-            <form class="main_form">
-                <div class="contactus">
-                    <label for="specialty">Select Specialty:</label>
-                    <select id="specialty" name="specialty">
-                        <option value="cardiology">Cardiology</option>
-                        <option value="dermatology">Dermatology</option>
-                        <option value="neurology">Neurology</option>
-                        <option value="orthopedics">Orthopedics</option>
-                    </select>
-					<button type="button" id="update-doctors">Submit</button>
-                </div>
+        <!-- Form 1: Specialty Selection -->
+        <form id="specialty-form" class="main_form">
+            <div class="contactus">
+                <label for="specialty">Select Specialty:</label>
+                <select id="specialty" name="specialty">
+                    <option value="cardiology">Cardiology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                </select>
+                <button type="button" id="update-doctors">Submit</button>
+            </div>
+        </form>
 
-                <div class="contactus">
-                    <label for="doctor">Select Doctor:</label>
-                    <select id="doctor" name="doctor">
+<form id="appointment-form" class="main_form" action = "PatientHomePage.html" >
+            <div class="contactus">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" name="doctor">
+                    <option value="">Doctors</option>
+                </select>
+            </div>
 
-                    </select>
-                </div>
+            <div class="contactus">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
 
-                <div class="contactus">
-                    <label for="date">Select Date:</label>
-                    <input type="date" id="date" name="date">
-                </div>
+            <div class="contactus">
+                <label for="time">Select Time:</label>
+                <input type="time" id="time" name="time">
+            </div>
 
-                <div class="contactus">
-                    <label for="time">Select Time:</label>
-                    <input type="time" id="time" name="time">
-                </div>
+            <div class="contactus">
+                <label for="reason">Reason for Visit:</label>
+                <textarea id="reason" name="reason" rows="4"></textarea>
+            </div>
 
-                <div class="contactus">
-                    <label for="reason">Reason for Visit:</label>
-                    <textarea id="reason" name="reason" rows="4"></textarea>
-                </div>
-
-                
-             <button  type="submit"id="buttonBooking" onclick="redirectToPage()" >Submit Booking</button>
-				
-            </form>
+            <button type="submit" id="buttonBooking" >Submit Booking</button>
+        </form>
         </section>
     </div>
 </div>

@@ -1,3 +1,5 @@
+  
+document.addEventListener("DOMContentLoaded", function () {
     // قائمة الأطباء بناءً على التخصص
     const doctorsBySpecialty = {
         cardiology: ["Dr. John Smith", "Dr. Mary Jones"],
@@ -16,9 +18,9 @@
         const selectedSpecialty = specialtySelect.value;
 
         // تفريغ قائمة الأطباء القديمة
-        doctorSelect.innerHTML = '<option value="">   Doctors </option>';
+        doctorSelect.innerHTML = '<option value="">Doctors</option>';
 
-        // إذا كان التخصص مختارًا، أضف الأطباء المناسبين
+        // إضافة الأطباء بناءً على التخصص المحدد
         if (selectedSpecialty && doctorsBySpecialty[selectedSpecialty]) {
             doctorsBySpecialty[selectedSpecialty].forEach(doctor => {
                 const option = document.createElement("option");
@@ -28,6 +30,9 @@
             });
         }
     });
+});
+
+	
 	
 
 
@@ -35,7 +40,5 @@
 
 
 
-     function redirectToPage() {
-            window.location.href = "PatientHomePage.html"; // تغيير إلى الصفحة المطلوبة
-        }
+   
 
