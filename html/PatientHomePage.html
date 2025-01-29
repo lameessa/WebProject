@@ -34,9 +34,7 @@
                 <p><strong>Date of Birth:</strong> 1/1/2014</p>
                 <p><strong>Email:</strong> email@example.com</p>
             </div>
-            <div class="patient-image">
-                <img src="../images/bunny.png" alt="Patient Image">
-            </div>
+           
         </div>
     </div>
     
@@ -44,6 +42,9 @@
 
     <div class="appointments-container">
         <h2 class="section-title">My Appointments</h2>
+        <div class="appointment-actions">
+            <button class="book-appointment" onclick="redirectToBooking()">Book an appointment</button>
+        </div>
         <table class="appointments-table">
             <thead>
                 <tr>
@@ -77,9 +78,7 @@
                
             </tbody>
         </table>
-        <div class="appointment-actions">
-            <button class="book-appointment" onclick="redirectToBooking()">Book an appointment</button>
-        </div>
+        
     </div>
 
     <footer id="footer" class="footer ">
