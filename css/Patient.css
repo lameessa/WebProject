@@ -199,7 +199,3 @@ margin: 0;
     color: #333;
 }
 
-select option {
-    background-color: white; /* Background for options */
-    color: black; /* Ensure text is visible */
-}

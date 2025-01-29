@@ -76,10 +76,7 @@ input, select {
     outline: none;
     opacity: 1;
 }
-select option {
-    background-color: white; /* Background for options */
-    color: black; /* Ensure text is visible */
-}
+
 select {
     background-color: rgba(255, 255, 255, 0.4); /* Make background semi-transparent */
     color: white; /* Ensure selected text is visible */
