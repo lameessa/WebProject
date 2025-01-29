@@ -1,74 +1,14 @@
 body {
     background: white;
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Center content vertically */
-    justify-content: center;
+   
     margin: 0;
 }
-header {
-    padding: 10px 0;
-    border-bottom:0.1em solid #ddd;
-    width: 100%;
-  }
-  
-  header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem; 
-  }
-  
-  header .header-button img{
-    height: 3.4em;
-    width: 9.5em;
-    border-style: none;
-    transition: transform 0.3s ease;
-  }
-  header .header-button img:hover {
-    transform: scale(1.1); /* Zoom effect on hover */
-}
-  header .header-button button{
-      top:10%;
-      border-style:none; }
-  
-      header .logo {
-        display: flex;
-        font-size: 1em;
-        text-decoration: none;
-        transition: transform 0.3s ease; /* Smooth transition */
-    }
-    header .logo:hover {
-        transform: scale(1.1); /* Zoom effect on hover */
-    }
-  header a {	text-decoration:none;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-  }
-  
-  header .logo span {
-      font-weight:bold;
-          font-size:1.2em;
-          text-shadow: 0.1em 0.1em 0.1em gray;
-  }
-  
-  header .logo a #rifq {color:#1d1c1a;}
-  header .logo a #clinic {color:#f5b90d;}
-  
-  
-  header .logo img {
-  height:3.4em;
-  width:3.4em;
-  margin-right:0.5em;
-  }
- 
+
 
 
 /* Appointments table */
 .appointments-container {
-    width: 90%;
     background-color:  #fff;
     border-radius: 15px;
     padding: 2rem;
@@ -76,6 +16,9 @@ header {
     margin-bottom: 6rem; /* Centers the container horizontally */
     text-align: center;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .section-title{
     font-family: 'Poppins', sans-serif;
@@ -256,99 +199,3 @@ margin: 0;
     color: #333;
 }
 
-.patient-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    right: 30px; /* Position it inside the banner */
-    bottom: 30px; /* Adjust to stay within the banner */
-}
-
-.patient-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-/* Footer */
-.footer {
-    background-color: #5c4d48;
-    color: white;
-  }
-  
-  .footer-top .container .row{
-      display:flex;
-      justify-content:space-around;
-      align-items:top;
-  }
-  
-  .footer-top span {
-      font-weight:bold;
-  }
-  
-  
-  .footer-top .container .row .col {
-      max-width:25%;
-      transition: transform 0.3s ease;
-  }
-  
-  .footer-top .container .row .col:hover {
-      transform: scale(1.025);
-  }
-  
-  .footer-top {
-      padding: 2em;
-  }
-  
-  .footer h2 {
-      text-shadow:0.1em 0.1em 0.1em #333;
-      font-size: 20px;
-      margin-bottom: 15px;
-      color:#f5b90d;
-  }
-  
-  .footer p {
-    font-size: 14px;
-    margin-bottom: 15px;
-      text-shadow:0.1em 0.1em 0.08em #333;
-  }
-  
-  .footer .social {
-      font-size: 0.9em;
-  }
-  
-  .footer .social li {
-    list-style: none;
-    margin-bottom: 0.2em;
-  }
-  
-  .footer .social img {
-      height:1em;
-      width:1em;
-      margin-right:0.3em;
-      }
-  
-  .footer .time-sidual {
-    list-style: none;
-  }
-  
-  .footer .time-sidual li {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .copyright {
-      bottom:0%;
-      text-align: center;
-      padding: 15px;
-      background-color: #332c28;
-      color: white;
-      font-size: 14px;
-  }
-  
-  .copyright span {
-      text-decoration:underline;
-      
-  }
