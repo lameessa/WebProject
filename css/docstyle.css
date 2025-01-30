@@ -108,7 +108,13 @@ header .logo img {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    text-align: center;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+}
+.doctor-info img {
+	height:8em;
+	width:8em;
 }
 
 h2, h3 {
@@ -147,10 +153,10 @@ td {
 .btn {
     background-color: #f5b90d; 
     color: white;
-    padding: 10px 20px;
+    padding: 7px 15px;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -159,7 +165,7 @@ td {
 }
 
 .status {
-    padding: 5px 12px;
+    padding: 7px 15px;
     border-radius: 20px;
     font-size: 12px;
 }
