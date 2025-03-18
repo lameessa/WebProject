@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 	<header>
 		<div class="container">
 			<div class="logo">
-				<a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>				</div>
+				<a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>				</div>
 				<div class="header-button">
 					<button id="login-signup-button"><img src="../images/login-header.png" alt="Log in or Sign up"></button>
 				</div>
@@ -95,7 +95,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 				<h2>Welcome to Your Pet's<br>Health Portal!</h2>
 				<p>Log in to access your account and view your pet's <br> medical history, upcoming appointments, and personalized care recommendations.</p>
 				<button class="login-button">Login</button>
-				<a href="Signup.html" class="signup-link">Don't have an account? Sign up here.</a>
+				<a href="Signup.php" class="signup-link">Don't have an account? Sign up here.</a>
 			</div>
 		</section>
 		<!--Log in split end-->
