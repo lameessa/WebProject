@@ -5,12 +5,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 -->
 <html>
     <head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Rifq</title>
-		<link rel="stylesheet" href="../css/HFstyle.css">
-		<link rel="stylesheet" href="../css/indexStyle.css">
-	</head>
+	<link rel="stylesheet" href="../css/HFstyle.css">
+	<link rel="stylesheet" href="../css/indexStyle.css">
+    </head>
     <body>
 	<!-- Header -->
 	<header>
