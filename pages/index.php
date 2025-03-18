@@ -12,32 +12,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 		<link rel="stylesheet" href="../css/indexStyle.css">
 	</head>
     <body>
-		<!-- Header -->
-		<header>
-			<div class="container">
-				<div class="logo">
-					<a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
-				</div>
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>				</div>
 				<div class="header-button">
 					<button id="login-signup-button"><img src="../images/login-header.png" alt="Log in or Sign up"></button>
 				</div>
 			</div>
-		</header>
+		</div>
+	</header>
 		
 		
-		<!--main start-->
-		<main>
-		
+	<!--main start-->
+	<main>		
 		<!--welcome-here start -->
 		<section id="home" class="welcome-here">
 			<div class="container">
 				<div class="welcome-here-txt">
 					<p>Welcome to Rifq Veterinary Clinic! </p>
 				</div>
-					<h2>Expert care for your <br> pets at <span>Rifq Clinic.</span></h2>
-					<a href="#login-section" id="appointment-button"><img src="../images/home-book-paw.png" alt="paws">Book Appointment</a>
-					
-
+				<h2>Expert care for your <br> pets at <span>Rifq Clinic.</span></h2>
+				<a href="#login-section" id="appointment-button"><img src="../images/home-book-paw.png" alt="paws">Book Appointment</a>
 			</div>
 		</section><!--/.welcome-here-->
 		<!--welcome-here end -->
@@ -103,64 +100,64 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 		</section>
 		<!--Log in split end-->
 
-
-		</main>
-		<!--main end-->
+	</main>
+	<!--main end-->
 		
-		<!-- Footer Area -->
-		<footer id="footer" class="footer ">
-			<!-- Footer Top -->
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="single-footer">
-								<h2>About Us</h2>
-								<p>At Rifq Clinic, we are dedicated to providing exceptional veterinary care for your beloved pets.
-								   Our team of experienced professionals is committed to ensuring the health and well-being of your furry
-								   companions through personalized treatment plans and compassionate service.</p>
-							</div>
+	<!-- Footer Area -->
+	<footer id="footer" class="footer ">
+		<!-- Footer Top -->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="single-footer">
+							<h2>About Us</h2>
+							<p>At Rifq Clinic, we are dedicated to providing exceptional veterinary care for your beloved pets.
+							   Our team of experienced professionals is committed to ensuring the health and well-being of your furry
+							   companions through personalized treatment plans and compassionate service.
+							</p>
 						</div>
-						<div class="col">
-							<div class="single-footer">
-								<h2>Open Hours</h2>
-								<p>Below are our operating hours:</p>
-								<ul class="time-sidual">
-									<li class="day">Monday - Thursday <span>9:00 AM - 3:00 PM</span></li>
-									<li class="day">Friday <span>8:00 AM - 8:00 PM</span></li>
-									<li class="day">Saturday <span>9:00 AM - 6:30 PM</span></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col">
-							<h2>Contact Us</h2>
-							<ul class="social">
-								<li><i class="icofont-facebook"><img src="../images/facebook-icon.png" alt="facebook">@Rifq_Clinic</i></li>
-								<li><i class="icofont-x"><img src="../images/x-icon.png" alt="x">@Rifq_Clinic</i></li>
-								<li><i class="icofont-instagram"><img src="../images/instagram-icon.png" alt="instagram">@Rifq_Clinic</i></li>
-								<li><i class="icofont-gmail"><img src="../images/gmail-icon.png" alt="gmail">Rifq_Clinic@gmail.com</i></li>
-								<li><i class="icofont-phone"><img src="../images/phone-icon.png" alt="phone">+966 555 123 456</i></li>
+					</div>
+					<div class="col">
+						<div class="single-footer">
+							<h2>Open Hours</h2>
+							<p>Below are our operating hours:</p>
+							<ul class="time-sidual">
+								<li class="day">Monday - Thursday <span>9:00 AM - 3:00 PM</span></li>
+								<li class="day">Friday <span>8:00 AM - 8:00 PM</span></li>
+								<li class="day">Saturday <span>9:00 AM - 6:30 PM</span></li>
 							</ul>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!--/ End Footer Top -->
-			<!-- Copyright -->
-			<div class="copyright">
-				<div class="container">
-					<div class="row">
-						<div class="copyright-content">
-							<p>© Copyright 2025  |  All Rights Reserved by <span>IT329</span> </p>
-						</div>
+					<div class="col">
+						<h2>Contact Us</h2>
+						<ul class="social">
+							<li><i class="icofont-facebook"><img src="../images/facebook-icon.png" alt="facebook">@Rifq_Clinic</i></li>
+							<li><i class="icofont-x"><img src="../images/x-icon.png" alt="x">@Rifq_Clinic</i></li>
+							<li><i class="icofont-instagram"><img src="../images/instagram-icon.png" alt="instagram">@Rifq_Clinic</i></li>
+							<li><i class="icofont-gmail"><img src="../images/gmail-icon.png" alt="gmail">Rifq_Clinic@gmail.com</i></li>
+							<li><i class="icofont-phone"><img src="../images/phone-icon.png" alt="phone">+966 555 123 456</i></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<!--/ End Copyright -->
-		</footer>
-		<!--/ End Footer Area -->
+		</div>
+		<!--/ End Footer Top -->
+		<!-- Copyright -->
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="copyright-content">
+						<p>© Copyright 2025  |  All Rights Reserved by <span>IT329</span> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Copyright -->
+	</footer>
+	<!--/ End Footer Area -->
 		
-		<script src="../js/index.js"></script>
+	<script src="../js/index.js"></script>
 		
-	</body>
-	</html>
+    </body>
+</html>
