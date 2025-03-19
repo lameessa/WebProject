@@ -52,7 +52,7 @@ if(!$connection){
         </a>
       </div>
       <div class="header-button">
-        <a href="Logout.php"><img src="../images/LogOut.PNG" alt="Log out"></a>
+        <a href="Logout.php"><img src="../images/LogOut.png" alt="Log out"></a>
       </div>
     </div>
   </header>
