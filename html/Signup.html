@@ -1,101 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="../css/signstyle.css">
-    </head>
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="../css/signstyle.css">
+</head>
 <body>
 
-    <header>
-        <div class="mcontainer">
-            <div class="logo">
-                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
-            </div>
-        </div>
-    </header>
+<header>
+  <div class="mcontainer">
+    <div class="logo">
+      <a href="index.html">
+        <img src="../images/logo.png" alt="Rifq Logo">
+        <span id="rifq">Rifq</span><span id="clinic">Clinic</span>
+      </a>
+    </div>
+  </div>
+</header>
 
-    <div class="container">
-        <h2>Sign Up</h2>
-        
-        <!-- Radio Buttons for Role Selection -->
-        <div class="radio-container">
-            <label>Select Role:</label>
-            <input type="radio" id="patient" name="role" value="patient">
-            <label for="patient">Patient</label>
-            <input type="radio" id="doctor" name="role" value="doctor">
-            <label for="doctor">Doctor</label>
-        </div>
+<div class="container">
+  <h2>Sign Up</h2>
 
-        <!-- Patient Form -->
-        <form id="patient-form" class="form-container">
-            <input type="text" placeholder="First Name" required><br>
-            <input type="text" placeholder="Last Name" required><br>
-            <input type="number" placeholder="National ID" required><br>
-            
-            <!-- Gender Selection -->
-            <label>Gender</label>
-            <select required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select><br>
-
-            <!-- Date of Birth -->
-            <input type="date" placeholder="Date of Birth" required><br>
-            <input type="email" placeholder="Email" required><br>
-            <input type="password" placeholder="Password" required><br>
-            <button type="button" class="btn" onclick="redirectToPatient()">Register</button>
-        </form>
-
-        <!-- Doctor Form -->
-        <form id="doctor-form" class="form-container">
-            <input type="text" placeholder="First Name" required><br>
-            <input type="text" placeholder="Last Name" required><br>
-            <input type="number" placeholder="National ID" required><br>
-            <input type="file" placeholder="Upload Photo" required><br>
-            <select required>
-                <option value="general">General Medicine</option>
-                <option value="pediatrics">Pediatrics</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="neurology">Neurology</option>
-            </select><br>
-            <input type="email" placeholder="Email" required><br>
-            <input type="password" placeholder="Password" required><br>
-            <button type="button" class="btn" onclick="redirectToDoctor()">Register</button>
-        </form>
+  <!-- نموذج التسجيل مرئي من البداية  -->
+  <form id="signup-form" action="php/Signup.php" method="POST" enctype="multipart/form-data">
+    <!-- اختيار الدور -->
+    <div class="radio-container">
+      <label>Select Role:</label>
+      <input type="radio" id="patient" name="userType" value="patient" required>
+      <label for="patient">Patient</label>
+      <input type="radio" id="doctor" name="userType" value="doctor" required>
+      <label for="doctor">Doctor</label>
     </div>
 
-    <script>
-        // Function to show the correct form based on role selection
-        function showForm() {
-            var patientRadio = document.getElementById('patient');
-            var doctorRadio = document.getElementById('doctor');
+    <!-- الحقول المشتركة بين المرضى والأطباء -->
+    <input type="text" name="firstName" placeholder="First Name" required><br>
+    <input type="text" name="lastName" placeholder="Last Name" required><br>
+    <input type="number" name="nationalID" placeholder="National ID" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
 
-            if (patientRadio.checked) {
-                document.getElementById('patient-form').style.display = 'block';
-                document.getElementById('doctor-form').style.display = 'none';
-            } else if (doctorRadio.checked) {
-                document.getElementById('doctor-form').style.display = 'block';
-                document.getElementById('patient-form').style.display = 'none';
-            }
-        }
+    <!-- الحقول الخاصة بالمريض: نبدأها مخفية -->
+    <div id="patient-fields" style="display: none;">
+      <label>Gender:</label>
+      <select name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select><br>
 
-        // Add event listeners for role selection
-        document.getElementById('patient').addEventListener('change', showForm);
-        document.getElementById('doctor').addEventListener('change', showForm);
+      <label>Date of Birth:</label>
+      <input type="date" name="dob"><br>
+    </div>
 
-        // Redirect to the patient homepage
-        function redirectToPatient() {
-            window.location.href = "PatientHomePage.html"; // Redirect to the patient page
-        }
+    <!-- الحقول الخاصة بالطبيب: نبدأها مخفية -->
+    <div id="doctor-fields" style="display: none;">
+      <label>Speciality:</label>
+      <select name="specialityID">
+        <option value="1">General Medicine</option>
+        <option value="2">Pediatrics</option>
+        <option value="3">Cardiology</option>
+        <option value="4">Neurology</option>
+      </select><br>
 
-        // Redirect to the doctor homepage
-        function redirectToDoctor() {
-            window.location.href = "Doctor.html"; // Redirect to the doctor page
-        }
-    </script>
+      <label>Upload Photo:</label>
+      <input type="file" name="profilePic" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn">Register</button>
+  </form>
+</div>
+
+<script>
+// نخفي/نُظهر حقول الطبيب والمريض بناءً على الراديو
+document.querySelectorAll('input[name="userType"]').forEach((radio) => {
+  radio.addEventListener('change', function() {
+    let patientFields = document.getElementById('patient-fields');
+    let doctorFields = document.getElementById('doctor-fields');
+
+    if (this.value === 'doctor') {
+      doctorFields.style.display = "block";
+      patientFields.style.display = "none";
+    } else {
+      patientFields.style.display = "block";
+      doctorFields.style.display = "none";
+    }
+  });
+});
+</script>
 
 </body>
 </html>
