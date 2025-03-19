@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Sign Up</title>
   <link rel="stylesheet" href="../css/signstyle.css">
 </head>
@@ -22,7 +22,9 @@
 <div class="container">
   <h2>Sign Up</h2>
 
-  <!-- نموذج التسجيل مرئي من البداية  -->
+  <!-- مكان لعرض رسالة الخطأ إن وجدت -->
+  <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+
   <form id="signup-form" action="../php/Signup.php" method="POST" enctype="multipart/form-data">
     <!-- اختيار الدور -->
     <div class="radio-container">
@@ -41,7 +43,7 @@
     <input type="password" name="password" placeholder="Password" required><br>
 
     <!-- الحقول الخاصة بالمريض: نبدأها مخفية -->
-    <div id="patient-fields" style="display: none;">
+    <div id="patient-fields" style="display:none;">
       <label>Gender:</label>
       <select name="gender">
         <option value="Male">Male</option>
@@ -53,7 +55,7 @@
     </div>
 
     <!-- الحقول الخاصة بالطبيب: نبدأها مخفية -->
-    <div id="doctor-fields" style="display: none;">
+    <div id="doctor-fields" style="display:none;">
       <label>Speciality:</label>
       <select name="specialityID">
         <option value="1">General Medicine</option>
@@ -71,21 +73,32 @@
 </div>
 
 <script>
-// نخفي/نُظهر حقول الطبيب والمريض بناءً على الراديو
-document.querySelectorAll('input[name="userType"]').forEach((radio) => {
-  radio.addEventListener('change', function() {
-    let patientFields = document.getElementById('patient-fields');
-    let doctorFields = document.getElementById('doctor-fields');
+  // إظهار/إخفاء حقول الطبيب والمريض بناءً على اختيار الراديو
+  document.querySelectorAll('input[name="userType"]').forEach((radio) => {
+    radio.addEventListener('change', function() {
+      let patientFields = document.getElementById('patient-fields');
+      let doctorFields  = document.getElementById('doctor-fields');
 
-    if (this.value === 'doctor') {
-      doctorFields.style.display = "block";
-      patientFields.style.display = "none";
-    } else {
-      patientFields.style.display = "block";
-      doctorFields.style.display = "none";
-    }
+      if (this.value === 'doctor') {
+        doctorFields.style.display = "block";
+        patientFields.style.display = "none";
+      } else {
+        patientFields.style.display = "block";
+        doctorFields.style.display = "none";
+      }
+    });
   });
-});
+
+  // 1) نقرأ ?error=... من الرابط
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('error')) {
+    // 2) نفك ترميز قيمة الخطأ
+    const errorText = decodeURIComponent(params.get('error'));
+    // 3) نعرض الخطأ في العنصر #errorMsg
+    document.getElementById('errorMsg').textContent = errorText;
+    // 4) نحذف ?error=... من الرابط بعد العرض (ما يبقى عند الـRefresh)
+    history.replaceState({}, "", window.location.pathname);
+  }
 </script>
 
 </body>
