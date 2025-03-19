@@ -67,9 +67,9 @@ CREATE TABLE `Doctor` (
 --
 
 INSERT INTO `Doctor` (`id`, `firstName`, `lastName`, `uniqueFileName`, `SpecialityID`, `emailAddress`, `password`) VALUES
-(1, 'Saleh', 'Abdullah', 'doctor1.jpg', 1, 'saleh@example.com', 'hashed_password4'),
-(2, 'Sara', 'Ahmad', 'doctor2.jpg', 2, 'sara@example.com', 'hashed_password5'),
-(3, 'Lulu', 'Mohamed', 'doctor3.jpg', 3, 'lulu@example.com', 'hashed_password6');
+(1, 'Saleh', 'Abdullah', 'doctor1.png', 1, 'saleh@example.com', 'hashed_password4'),
+(2, 'Sara', 'Ahmad', 'doctor2.png', 2, 'sara@example.com', 'hashed_password5'),
+(3, 'Lulu', 'Mohamed', 'doctor3.png', 3, 'lulu@example.com', 'hashed_password6');
 
 -- --------------------------------------------------------
 
