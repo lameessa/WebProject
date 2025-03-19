@@ -35,7 +35,7 @@ CREATE TABLE `Appointment` (
   `time` time NOT NULL,
   `reason` text NOT NULL,
   `status` enum('Pending','Confirmed','Done') DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Appointment`
@@ -60,7 +60,7 @@ CREATE TABLE `Doctor` (
   `SpecialityID` int NOT NULL,
   `emailAddress` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Doctor`
@@ -80,7 +80,7 @@ INSERT INTO `Doctor` (`id`, `firstName`, `lastName`, `uniqueFileName`, `Speciali
 CREATE TABLE `Medication` (
   `id` int NOT NULL,
   `MedicationName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Medication`
@@ -106,7 +106,7 @@ CREATE TABLE `Patient` (
   `DoB` date NOT NULL,
   `emailAddress` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Patient`
@@ -127,7 +127,7 @@ CREATE TABLE `Prescription` (
   `id` int NOT NULL,
   `AppointmentID` int NOT NULL,
   `MedicationID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Prescription`
@@ -147,7 +147,7 @@ INSERT INTO `Prescription` (`id`, `AppointmentID`, `MedicationID`) VALUES
 CREATE TABLE `Speciality` (
   `id` int NOT NULL,
   `speciality` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Speciality`

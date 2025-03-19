@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
     <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Rifq</title>
+        <title>Rifq | Home</title>
 	<link rel="stylesheet" href="../css/HFstyle.css">
 	<link rel="stylesheet" href="../css/indexStyle.css">
     </head>
@@ -16,17 +16,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 	<header>
 		<div class="container">
 			<div class="logo">
-				<a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>				</div>
-				<div class="header-button">
-					<button id="login-signup-button"><img src="../images/login-header.png" alt="Log in or Sign up"></button>
-				</div>
+				<a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
+			</div>
+			<div class="header-button">
+				<button id="login-signup-button"><img src="../images/login-header.png" alt="Log in or Sign up"></button>
 			</div>
 		</div>
 	</header>
 		
 		
 	<!--main start-->
-	<main>		
+	<main>	
 		<!--welcome-here start -->
 		<section id="home" class="welcome-here">
 			<div class="container">
