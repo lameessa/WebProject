@@ -88,9 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // **إعادة توجيه المستخدم**
         if ($userType == "doctor") {
-            header("refresh:2; url= html/Doctor.html");
+            header("refresh:2; url= ../html/Doctor.html");
         } else {
-            header("refresh:2; url= html/Patient.html");
+            header("refresh:2; url= ../html/Patient.html");
         }
         exit();
     } else {
