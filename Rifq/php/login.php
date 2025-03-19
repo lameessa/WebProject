@@ -42,9 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // توجيه المستخدم
             if ($userType === "doctor") {
-                header("Location: Doctor.html");
+                header("Location: ../html/Doctor.html");
             } else {
-                header("Location: patient_homepage.html");
+                header("Location: ../html/Patient.html");
             }
             exit();
         } else {
