@@ -1,0 +1,127 @@
+/* Header Styles */
+header {
+    padding: 0.2em 0.9em;
+    border-bottom:0.1em solid #ddd;
+  }
+  
+  .mcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow:visible;
+  }
+  
+  header .header-button img{
+      height:3.7em;
+      width:10em;
+      border-style:none;
+      transition: transform 0.3s ease;
+  }
+  
+  header .header-button img:hover{
+  transform: scale(1.1);
+  }
+  
+  header .header-button button{
+      top:10%;
+      border-style:none; }
+  
+  header .logo{
+      display:flex;
+      text-decoration:none;
+      transition: transform 0.3s ease;
+  }
+  
+  header .logo:hover{
+      transform: scale(1.1);
+  }
+  
+  
+  header a {	text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+  }
+  
+  header .logo span {
+      font-size:1.2em;
+      font-weight:bold;
+  }
+  
+  header .logo a #rifq {color:#1d1c1a;}
+  header .logo a #clinic {color:#f5b90d;}
+  
+  
+  header .logo img {
+  height:3.2em;
+  width:3.2em;
+  margin-right:0.5em;
+  }
+  
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background-color: #f0f4f8;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: #d07f00;
+    text-align: center;
+}
+label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="file"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+input[type="radio"] {
+    margin-right: 5px;
+}
+select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="file"]:focus, input[type="date"]:focus {
+    outline: none;
+    border-color: #f5b90d;
+}
+.btn {
+    background-color: #d07f00;
+    color: #f0f4f8;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto;
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+}
+.btn:hover {
+    background-color: #d07f00;
+}
+.form-container {
+    display: none;
+}
+.radio-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
