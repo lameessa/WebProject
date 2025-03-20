@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 } else {
     // إذا حاولوا دخول الصفحة مباشرة
-    header("Location: Login.html");
+    header("Location: Login.php");
     exit();
 }
 
