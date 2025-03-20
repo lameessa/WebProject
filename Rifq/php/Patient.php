@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
+-->
+<?php
+session_start();
+
+// الاتصال بقاعدة البيانات
+$connection = mysqli_connect("localhost", "root", "root", "Rifq");
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+/*
+// تحقق مما إذا كان المستخدم مسجلاً الدخول
+if (!isset($_SESSION['patient_id'])) {
+    header('Location: login.php');
+    exit();
+}
+*/
+$patient_id = 1234;
+
+// جلب بيانات المريض
+$query = "SELECT firstName, lastName, emailAddress FROM Patient WHERE id = ?";
+$stmt = $connection->prepare($query);
+$stmt->bind_param("i", $patient_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$patient = $result->fetch_assoc();
+
+// جلب جميع المواعيد المرتبطة بالمريض بترتيب زمني
+$query = "SELECT A.id, A.date, A.time, D.firstName AS doctor_name, D.uniqueFileName AS doctor_photo, A.status 
+          FROM Appointment A
+          JOIN Doctor D ON A.DoctorID = D.id
+          WHERE A.PatientID = ? 
+          ORDER BY A.date, A.time";
+$stmt = $connection->prepare($query);
+$stmt->bind_param("i", $patient_id);
+$stmt->execute();
+$appointments = $stmt->get_result();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Homepage</title>
+    <link rel="stylesheet" href="../css/HFstyle.css">
+    <link rel="stylesheet" href="../css/Patient.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"> <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
+            </div>
+            <div class="header-button">
+                <a href="logout.php"><img src="../images/LogOut.PNG" alt="Log out"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-banner-area">
+        <div class="page-banner-content">
+            <h1>Welcome, <?php echo htmlspecialchars($patient['firstName']); ?>!</h1>
+            <p><strong>Name:</strong> <?php echo htmlspecialchars($patient['firstName'] . ' ' . $patient['lastName']); ?></p>
+            <p><strong>Email:</strong> <?php echo htmlspecialchars($patient['emailAddress']); ?></p>
+        </div>
+    </div>
+
+    <div class="appointments-container">
+        <h2 class="section-title">My Appointments</h2>
+        <div class="appointment-actions">
+            <a href="book_appointment.php" class="book-appointment">Book an appointment</a>
+        </div>
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Doctor’s Name</th>
+                    <th>Doctor’s Photo</th>
+                    <th>Status</th>
+                    <th>Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = $appointments->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['time']); ?></td>
+                    <td><?php echo htmlspecialchars($row['date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
+                    <td><img src="../images/<?php echo htmlspecialchars($row['doctor_photo']); ?>" alt="Doctor's Photo"></td>
+                    <td><span class="status <?php echo strtolower($row['status']); ?>"><?php echo htmlspecialchars($row['status']); ?></span></td>
+                    <td><a href="cancel_appointment.php?id=<?php echo $row['id']; ?>" class="cancel-link">Cancel</a></td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 | All Rights Reserved by Rifq Clinic</p>
+    </footer>
+</body>
+</html>
+
