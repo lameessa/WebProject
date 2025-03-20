@@ -108,7 +108,7 @@ if(!$connection){
             echo "<td>";
                 //STATUS
                 if($row['status']==='Pending'){
-                    echo '<span style="color:orange;"> ‎  Pending</span><br><a class="btn" href="Confirm.php?appointment_id=' .$row['id'] .'">Confirm</a>';
+                    echo '<span style="color:orange;"> ‎  ‎Pending</span><br><a class="btn" href="Confirm.php?appointment_id=' .$row['id'] .'">Confirm</a>';
                 } elseif($row['status']==='Confirmed'){
                     echo '‎<span style="color:green;"> ‎ Confirmed</span><br><a class="btn" href="Medication.php?appointment_id=' .$row['id'] .'">Prescribe</a>';
                 }
@@ -153,11 +153,11 @@ if(!$connection){
               while($appRow = mysqli_fetch_assoc($appsRes)){
                 $appID = $appRow['id'];
                 $presSql = "SELECT MedicationID FROM Prescription WHERE AppointmentID='$appID'";
-                $presRes = mysqli_query($conn, $presSql);
+                $presRes = mysqli_query($connection, $presSql);
                 while($presRow = mysqli_fetch_assoc($presRes)){
                     $medID = $presRow['MedicationID'];
                     $medSql = "SELECT MedicationName FROM Medication WHERE id='$medID'";
-                    $medRes = mysqli_query($conn, $medSql);
+                    $medRes = mysqli_query($connection, $medSql);
                     $medRow = mysqli_fetch_assoc($medRes);
                     if($medRow){
                         $allMeds[] = $medRow['MedicationName'];
