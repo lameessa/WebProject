@@ -18,15 +18,18 @@ if (!isset($_SESSION['patient_id'])) {
     exit();
 }
 */
-$patient_id = 1234;
+$patient_id = 1234;;
 
 // جلب بيانات المريض
-$query = "SELECT firstName, lastName, emailAddress FROM Patient WHERE id = ?";
+$query = "SELECT firstName, lastName, emailAddress, DoB, Gender, id FROM Patient WHERE id = ?";
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $patient_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $patient = $result->fetch_assoc();
+if (!$patient) {
+    die("<h2>Error: Patient not found</h2>");
+}
 
 // جلب جميع المواعيد المرتبطة بالمريض بترتيب زمني
 $query = "SELECT A.id, A.date, A.time, D.firstName AS doctor_name, D.uniqueFileName AS doctor_photo, A.status 
@@ -62,10 +65,18 @@ $appointments = $stmt->get_result();
     </header>
 
     <div class="page-banner-area">
+        <div class="page-banner-image">
+            <img src="../images/Patientinfo.png" alt="Banner Image">
+        </div>
         <div class="page-banner-content">
-            <h1>Welcome, <?php echo htmlspecialchars($patient['firstName']); ?>!</h1>
-            <p><strong>Name:</strong> <?php echo htmlspecialchars($patient['firstName'] . ' ' . $patient['lastName']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($patient['emailAddress']); ?></p>
+            <div class="content-text">
+            <h1>Welcome <?php echo htmlspecialchars($patient['firstName']); ?>!</h1>
+            <p><strong>Name:</strong> <?php echo htmlspecialchars(($patient['firstName'] ?? 'Unknown') . ' ' . ($patient['lastName'] ?? '')); ?></p>
+            <p><strong>ID:</strong> <?php echo htmlspecialchars($patient['id'] ?? 'N/A'); ?></p>
+            <p><strong>Gender:</strong> <?php echo htmlspecialchars($patient['Gender'] ?? 'Not specified'); ?></p>
+            <p><strong>Date of Birth:</strong> <?php echo isset($patient['DoB']) ? date('j/n/Y', strtotime($patient['DoB'])) : 'Unknown'; ?></p>
+            <p><strong>Email:</strong> <?php echo htmlspecialchars($patient['emailAddress'] ?? 'No email available'); ?></p>
+            </div>
         </div>
     </div>
 
@@ -105,4 +116,6 @@ $appointments = $stmt->get_result();
     </footer>
 </body>
 </html>
+
+
 
