@@ -1,25 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+  
     <link rel="stylesheet" href="../css/HFstyle.css">
     <link rel="stylesheet" href="../css/LoginStyle.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
-            </div>
-           
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="../images/logo.png" alt="Rifq Logo">
+                <span id="rifq">Rifq</span><span id="clinic">Clinic</span>
+            </a>
         </div>
-    </header>
-    <div class="login-container">
-        <div class="login-form">
+    </div>
+</header>
+
+<div class="login-container">
+    <div class="login-form">
         <h2>Login</h2>
-        <form action="homepage.html" method="post">
+
+        <!-- مكان لعرض الخطأ إن وجد -->
+        <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+
+        <!-- نغير الـ action ليشير لملف PHP يعالج تسجيل الدخول -->
+        <form action="../php/login.php" method="POST">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
 
@@ -27,21 +38,20 @@
             <input type="password" id="password" name="password" required>
 
             <label for="role">User Role</label>
-            <select id="role" name="role">
+            <select id="role" name="userType">
                 <option value="patient">Patient</option>
                 <option value="doctor">Doctor</option>
             </select>
 
             <button type="submit">Login</button>
         </form>
-    
-        
-        </div>
-
-        <div class="dog-login">
-            <img src="../images/dog2.PNG" alt="">
-        </div>
     </div>
+
+    <div class="dog-login">
+        <img src="../images/dog2.PNG" alt="">
+    </div>
+</div>
+
 
     <footer id="footer" class="footer ">
         <!-- Footer Top -->
@@ -94,5 +104,17 @@
         <!--/ End Copyright -->
     </footer>
     <script src="../js/Login.js"></script>
+
+<script>
+  // لو فيه ?error=... في الرابط، نعرض الرسالة للمستخدم
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('error')) {
+    const errorText = decodeURIComponent(params.get('error'));
+    document.getElementById('errorMsg').textContent = errorText;
+    // إزالة البارامتر من الرابط
+    history.replaceState({}, "", window.location.pathname);
+  }
+</script>
+
 </body>
 </html>
