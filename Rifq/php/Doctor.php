@@ -3,7 +3,7 @@
 session_start();
 
 // LOGIN
-if(!isset($_SESSION['user_id'])) {
+/*if(!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
@@ -12,7 +12,7 @@ if(!isset($_SESSION['user_id'])) {
 if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'doctor') {
     $doctor_id = $_SESSION['user_id'];
 
-
+*/
 
 // CONNECT TO DATABASE
 $connection = mysqli_connect("localhost","root","root","Rifq");
@@ -231,5 +231,5 @@ if(!$connection){
 </body>
 </html>
 <?php
-    } mysqli_close($connection);
+     mysqli_close($connection);
 }

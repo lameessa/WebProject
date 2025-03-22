@@ -10,6 +10,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
+    header("Location: index.php");
+    exit();
+}
 
 
 // Check if appointment ID is provided in the URL
@@ -54,7 +58,7 @@ $med_res = mysqli_query($conn, $med_query);
                 <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">
-                <a href="index.html"><img src="../images/LogOut.PNG" alt="Log out"></a>
+                <a href="Logout.php"><img src="../images/LogOut.PNG" alt="Log out"></a>
             </div>
         </div>
     </header>
