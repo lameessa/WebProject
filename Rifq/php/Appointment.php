@@ -21,19 +21,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // معالجة طلب جلب الأطباء بناءً على التخصص المختار
 $doctors = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['specialty_id'])) {
-    $selected_specialty_id = $_POST['specialty_id'];
-    $query = "SELECT id, CONCAT(firstName, ' ', lastName) AS name FROM Doctor WHERE SpecialityID = ?";
-    $stmt = $connection->prepare($query);
-    $stmt->bind_param("i", $selected_specialty_id);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax']) && $_POST['ajax'] === 'get_doctors') {
+    header('Content-Type: application/json');
+
+    $specialty_id = $_POST['specialty_id'];
+    $stmt = $connection->prepare("SELECT id, CONCAT(firstName, ' ', lastName) AS name FROM Doctor WHERE SpecialityID = ?");
+    $stmt->bind_param("i", $specialty_id);
     $stmt->execute();
     $result = $stmt->get_result();
+
+
     while ($row = $result->fetch_assoc()) {
         $doctors[] = $row;
     }
+
     echo json_encode($doctors);
     exit;
 }
+
 
 // معالجة حجز الموعد
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['doctor_id'], $_POST['date'], $_POST['time'], $_POST['reason'], $_POST['patient_id'])) {

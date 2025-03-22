@@ -1,36 +1,43 @@
   
 document.addEventListener("DOMContentLoaded", function () {
-    // قائمة الأطباء بناءً على التخصص
-    const doctorsBySpecialty = {
-        cardiology: ["Dr. John Smith", "Dr. Mary Jones"],
-        dermatology: ["Dr. Susan Brown", "Dr. David Lee"],
-        neurology: ["Dr. Emily Clark", "Dr. Robert White"],
-        orthopedics: ["Dr. Chris Black", "Dr. Laura Green"]
-    };
-
-    // المراجع لعناصر HTML
     const specialtySelect = document.getElementById("specialty");
     const doctorSelect = document.getElementById("doctor");
     const updateDoctorsButton = document.getElementById("update-doctors");
 
-    // تحديث قائمة الأطباء عند الضغط على زر التحديث
     updateDoctorsButton.addEventListener("click", () => {
         const selectedSpecialty = specialtySelect.value;
 
-        // تفريغ قائمة الأطباء القديمة
-        doctorSelect.innerHTML = '<option value="">Doctors</option>';
+        if (!selectedSpecialty) {
+            alert("Please select a specialty first.");
+            return;
+        }
 
-        // إضافة الأطباء بناءً على التخصص المحدد
-        if (selectedSpecialty && doctorsBySpecialty[selectedSpecialty]) {
-            doctorsBySpecialty[selectedSpecialty].forEach(doctor => {
+        // إرسال طلب إلى الخادم
+        fetch("appointment.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `ajax=get_doctors&specialty_id=${selectedSpecialty}`
+
+        })
+        .then(response => response.json())
+        .then(data => {
+            doctorSelect.innerHTML = '<option value="">-- Select Doctor --</option>';
+            data.forEach(doctor => {
                 const option = document.createElement("option");
-                option.value = doctor.toLowerCase().replace(/\s+/g, "-");
-                option.textContent = doctor;
+                option.value = doctor.id;
+                option.textContent = doctor.name;
                 doctorSelect.appendChild(option);
             });
-        }
+        })
+        .catch(error => {
+            console.error("Error fetching doctors:", error);
+            alert("Error fetching doctors. Check console.");
+        });
     });
 });
+
 
 	
 	
