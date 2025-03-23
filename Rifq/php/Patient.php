@@ -111,10 +111,53 @@ $appointments = $stmt->get_result();
         </table>
     </div>
 
-    <footer>
-        <p>&copy; 2025 | All Rights Reserved by Rifq Clinic</p>
+    <footer id="footer" class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="single-footer">
+                            <h2>About Us</h2>
+                            <p>At Rifq Clinic, we are dedicated to providing exceptional veterinary care for your beloved pets.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="single-footer">
+                            <h2>Open Hours</h2>
+                            <p>Below are our operating hours:</p>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Thursday <span>9:00 AM - 3:00 PM</span></li>
+                                <li class="day">Friday <span>8:00 AM - 8:00 PM</span></li>
+                                <li class="day">Saturday <span>9:00 AM - 6:30 PM</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h2>Contact Us</h2>
+                        <ul class="social">
+                            <li><img src="../images/facebook-icon.png" alt="facebook"> @Rifq_Clinic</li>
+                            <li><img src="../images/x-icon.png" alt="x"> @Rifq_Clinic</li>
+                            <li><img src="../images/instagram-icon.png" alt="instagram"> @Rifq_Clinic</li>
+                            <li><img src="../images/gmail-icon.png" alt="gmail"> Rifq_Clinic@gmail.com</li>
+                            <li><img src="../images/phone-icon.png" alt="phone"> +966 555 123 456</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="copyright-content">
+                        <p>© Copyright 2025  |  All Rights Reserved by <span>IT329</span> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
+<link rel="stylesheet" href="../css/HFstyle.css">
 </html>
 
 
