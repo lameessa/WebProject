@@ -5,19 +5,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 session_start();
+/*
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
+    header("Location: index.php");
+    exit();
+}
+ */
 
 // الاتصال بقاعدة البيانات
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
-/*
-// تحقق مما إذا كان المستخدم مسجلاً الدخول
-if (!isset($_SESSION['patient_id'])) {
-    header('Location: login.php');
-    exit();
-}
-*/
+
 $patient_id = 1234;;
 
 // جلب بيانات المريض

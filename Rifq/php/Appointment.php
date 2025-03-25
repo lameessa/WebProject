@@ -5,6 +5,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 session_start();
+
+/*
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
+    header("Location: index.php");
+    exit();
+}
+ */
+
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
