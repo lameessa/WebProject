@@ -4,6 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
+
 session_start();
 
 /*
@@ -11,7 +12,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
- */
+*/
 
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
@@ -23,6 +24,7 @@ $specialties = [];
 $doctors = [];
 $selectedSpecialtyId = "";
 
+// جلب جميع التخصصات
 $sql = "SELECT id, speciality FROM Speciality";
 $result = $connection->query($sql);
 if ($result && $result->num_rows > 0) {
@@ -41,6 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
     while ($row = $result->fetch_assoc()) {
         $doctors[] = $row;
     }
+} else {
+    // إذا لم يتم اختيار تخصص، جلب جميع الأطباء
+    $sql = "SELECT id, firstName, lastName FROM Doctor";
+    $result = $connection->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $doctors[] = $row;
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -58,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
             </div>
             <div class="header-button">
                 <a href="index.html"><img src="../images/LogOut.PNG" alt="Log out"></a>
-                
             </div>
         </div>
     </header>
@@ -85,9 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                     <div class="contactus">
                         <label for="specialty">Select Specialty:</label>
                         <select id="specialty" name="specialty" required>
-                            <option value="">-- Select --</option>
+                            <option value="">-- Select Specialty --</option>
                             <?php foreach ($specialties as $spec): ?>
-                                <option value="<?= $spec['id'] ?>" <?= ($selectedSpecialtyId == $spec['id']) ? 'selected' : '' ?>><?= htmlspecialchars($spec['speciality']) ?></option>
+                                <option value="<?= $spec['id'] ?>" <?= ($selectedSpecialtyId == $spec['id']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($spec['speciality']) ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" name="update-doctors">Submit</button>
@@ -99,14 +111,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                     <div class="contactus">
                         <label for="doctor">Select Doctor:</label>
                         <select id="doctor" name="doctor_id" required>
+                            <option value="">Select a doctor...</option>
                             <?php
                             if (!empty($doctors)) {
                                 foreach ($doctors as $doc) {
                                     $fullName = $doc['firstName'] . ' ' . $doc['lastName'];
                                     echo "<option value='{$doc['id']}'>{$fullName}</option>";
                                 }
-                            } else {
-                                echo '<option value="">-- Please select a specialty first --</option>';
                             }
                             ?>
                         </select>
@@ -182,6 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
 </body>
 <link rel="stylesheet" href="../css/HFstyle.css">
 </html>
+
 
 
 
