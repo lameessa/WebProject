@@ -165,7 +165,6 @@ $med_res = mysqli_query($conn, $med_query);
 </html>
 
 <?php
-// Close the connection
 mysqli_close($conn);
 ?>
 

@@ -2,16 +2,14 @@
 session_start();
 
 // Database Connection
-$conn = mysqli_connect("localhost", "root", "root", "Rifq"); // Adjust as needed
+$conn = mysqli_connect("localhost", "root", "root", "Rifq"); 
 
 // Check if connection is successful
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Ensure the user is a doctor
 
-// Ensure the user is a doctor
 /*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: ../index.php");
     exit();
@@ -35,10 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Close the connection
     mysqli_close($conn);
 
-    // Redirect back to the doctor’s homepage
 header("Location: ../php/Doctor.php");
     exit();
 }
