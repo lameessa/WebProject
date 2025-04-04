@@ -10,24 +10,23 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
+/*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: index.php");
     exit();
 }
+*/
 
-
-// Check if appointment ID is provided in the URL
-if (!isset($_GET['appointment_id'])) {
-    die("Error: Appointment ID missing.");
-}
+/*if (!isset($_GET['appointment_id']) || !isset($_GET['patient_id'])) {
+    die("Error: Appointment ID or Patient ID missing.");
+}*/
 $appointment_id = $_GET['appointment_id'];
+$patient_id = $_GET['patient_id'];
 
 // Retrieve patient information
-$query = "SELECT p.id AS patient_id, p.firstName, p.lastName, p.Gender, 
-                 TIMESTAMPDIFF(YEAR, p.DoB, CURDATE()) AS age
-          FROM patient p 
-          JOIN appointment a ON p.id = a.PatientID
-          WHERE a.id = '$appointment_id'";
+$query = "SELECT firstName, lastName, Gender, 
+                 TIMESTAMPDIFF(YEAR, DoB, CURDATE()) AS age
+          FROM patient
+          WHERE id = '$patient_id'";
 
 $res = mysqli_query($conn, $query);
 $patient = mysqli_fetch_assoc($res);
@@ -75,7 +74,8 @@ $med_res = mysqli_query($conn, $med_query);
             <div class="form-container">
                 <form action="process_prescription.php" method="post">
                     <input type="hidden" name="appointment_id" value="<?= $appointment_id; ?>">
-                    <input type="hidden" name="patient_id" value="<?= $patient['patient_id']; ?>">
+                    <input type="hidden" name="patient_id" value="<?= $patient_id; ?>">
+
 
                     <label for="name">Patient's Name:</label>
                     <input type="text" id="name" name="name" value="<?= $patient['firstName'] . ' ' . $patient['lastName']; ?>" readonly>

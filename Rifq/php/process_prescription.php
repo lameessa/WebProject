@@ -12,10 +12,10 @@ if (!$conn) {
 // Ensure the user is a doctor
 
 // Ensure the user is a doctor
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
+/*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: ../index.php");
     exit();
-}
+}*/
 // Ensure form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $appointment_id = $_POST['appointment_id'];
