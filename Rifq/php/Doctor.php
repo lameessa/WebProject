@@ -3,7 +3,7 @@
 session_start();
 
 // LOGIN
-/*if(!isset($_SESSION['user_id'])) {
+if(!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
@@ -12,7 +12,7 @@ session_start();
 if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'doctor') {
     $doctor_id = $_SESSION['user_id'];
 
-*/
+
 
 // CONNECT TO DATABASE
 $connection = mysqli_connect("localhost","root","root","Rifq");
@@ -110,7 +110,7 @@ if(!$connection){
                 if($row['status']==='Pending'){
                     echo '<span style="color:orange;"> ‎  ‎Pending</span><br><a class="btn" href="Confirm.php?appointment_id=' .$row['id'] .'">Confirm</a>';
                 } elseif($row['status']==='Confirmed'){
-                    echo '‎<span style="color:green;"> ‎ Confirmed</span><br><a class="btn" href="Medication.php?appointment_id=' .$row['id'] .'">Prescribe</a>';
+                    echo '‎<span style="color:green;"> ‎ Confirmed</span><br><a class="btn" href="Medication.php?appointment_id=' .$row['id'] .'&patient_id=' .$patientID .'">Prescribe</a>';
                 }
             echo "</td>";
             echo "</tr>";
@@ -231,5 +231,5 @@ if(!$connection){
 </body>
 </html>
 <?php
-     mysqli_close($connection);
+} mysqli_close($connection);
 }
