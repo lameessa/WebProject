@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <?php
 
 session_start();
+include 'AuthCheck.php';
 
 /*
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {

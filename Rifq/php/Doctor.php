@@ -3,15 +3,17 @@
 session_start();
 
 // LOGIN
-if(!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+include 'AuthCheck.php';
+
+
+// DOCTOR
+if($_SESSION['user_type'] !== 'doctor') {
+     header("Location: index.php");
     exit();
 }
 
-// DOCTOR
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'doctor') {
-    $doctor_id = $_SESSION['user_id'];
 
+$doctor_id = $_SESSION['user_id'];
 
 
 // CONNECT TO DATABASE
@@ -232,4 +234,3 @@ if(!$connection){
 </html>
 <?php
 } mysqli_close($connection);
-}

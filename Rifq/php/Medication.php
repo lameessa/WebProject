@@ -3,12 +3,14 @@
 session_start();
 
 // Database Connection
-$conn = mysqli_connect("localhost", "root", "root", "Rifq"); // Adjust as needed
+$conn = mysqli_connect("localhost", "root", "root", "Rifq"); 
 
 // Check if connection is successful
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+include 'AuthCheck.php';
 
 /*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: index.php");
@@ -19,6 +21,7 @@ if (!$conn) {
 /*if (!isset($_GET['appointment_id']) || !isset($_GET['patient_id'])) {
     die("Error: Appointment ID or Patient ID missing.");
 }*/
+
 $appointment_id = $_GET['appointment_id'];
 $patient_id = $_GET['patient_id'];
 
