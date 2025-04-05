@@ -63,10 +63,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit();
         }
 
-        $sql = "INSERT INTO Doctor (firstName, lastName, emailAddress, password, SpecialityID, uniqueFileName)
-                VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssis", $firstName, $lastName, $email, $password, $specialityID, $profilePic);
+    $sql = "INSERT INTO Patient (firstName, lastName, nationalID, emailAddress, password, Gender, DoB)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssisss", $firstName, $lastName, $nationalID, $email, $password, $gender, $dob);
+
 
     } elseif ($userType === "patient") {
         $gender = $_POST['gender'];
