@@ -11,14 +11,8 @@ $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
-/*
-// تحقق مما إذا كان المستخدم مسجلاً الدخول
-if (!isset($_SESSION['patient_id'])) {
-    header("Location: login.php");
-    exit();
-}
-*/
-// التحقق مما إذا كان `id` موجودًا في الرابط
+ 
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Error: Appointment ID is missing.");
 }

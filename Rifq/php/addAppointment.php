@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $status = "Pending";
 
     // تحويل التاريخ إلى صيغة datetime كاملة
-    $datetime = date("Y-m-d", strtotime($date)) . " 00:00:00";
+    $datetime = date("Y-m-d", strtotime($date));
 
     $stmt = $connection->prepare("INSERT INTO Appointment (DoctorID, PatientID, date, time, reason, status) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iissss", $doctor_id, $patient_id, $datetime, $time, $reason, $status);

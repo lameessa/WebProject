@@ -32,7 +32,7 @@ if(!$connection){
     $docSpec = $specRow['speciality'];
     $sql3 = "SELECT * FROM Appointment WHERE DoctorID='$doctor_id' AND status IN('Pending','Confirmed') ORDER BY date ASC, time ASC";
     $res3 = mysqli_query($connection, $sql3);
-    $sql4 = "SELECT PatientID FROM Appointment WHERE DoctorID='$doctor_id' AND status='Done' ORDER BY PatientID ASC";
+    $sql4 = "SELECT DISTINCT PatientID FROM Appointment WHERE DoctorID='$doctor_id' AND status='Done' ORDER BY PatientID ASC";
     $res4 = mysqli_query($connection, $sql4);
 ?>
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ if(!$connection){
         <p><strong>Email:</strong> <?php echo $docRow['emailAddress']; ?></p>
       </div>
       <div class="right">
-          <img src="../images/<?php echo $docRow['uniqueFileName']; ?>" alt="Doctor Image">
+          <img src="uploads/<?php echo $docRow['uniqueFileName']; ?>" alt="Doctor Image">
       </div>
     </div>
     <div class="appointments-table">

@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                 <a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">
-                <a href="index.php<img src="../images/LogOut.PNG" alt="Log out"></a>
+                <a href="Logout.php"><img src="../images/LogOut.png" alt="Log out"></a>
             </div>
         </div>
     </header>
@@ -112,6 +112,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                 <form id="appointment-form" class="main_form" method="POST" action="addAppointment.php">
                     <div class="contactus">
                         <label for="doctor">Select Doctor:</label>
+                        <!--
+                            We are not using a hidden input here because the doctor ID is sent directly  
+                            from the drop-down list by setting the option's value to the doctor's ID.  
+                            This way, when a doctor is selected, their ID is submitted directly  
+                            without needing an additional hidden input field.
+                        -->
                         <select id="doctor" name="doctor_id" required>
                             <option value="">Select a doctor...</option>
                             <?php

@@ -12,15 +12,15 @@ if (!$conn) {
 
 include 'AuthCheck.php';
 
-/*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
+if ($_SESSION['user_type'] !== 'doctor') {
     header("Location: index.php");
     exit();
 }
-*/
 
-/*if (!isset($_GET['appointment_id']) || !isset($_GET['patient_id'])) {
+
+if (!isset($_GET['appointment_id']) || !isset($_GET['patient_id'])) {
     die("Error: Appointment ID or Patient ID missing.");
-}*/
+}
 
 $appointment_id = $_GET['appointment_id'];
 $patient_id = $_GET['patient_id'];

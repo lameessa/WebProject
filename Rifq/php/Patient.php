@@ -66,7 +66,7 @@ $appointments = $stmt->get_result();
                 <a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"> <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">
-                <a href="logout.php"><img src="../images/LogOut.PNG" alt="Log out"></a>
+                <a href="Logout.php"><img src="../images/LogOut.png" alt="Log out"></a>
             </div>
         </div>
     </header>
@@ -95,8 +95,8 @@ $appointments = $stmt->get_result();
         <table class="appointments-table">
             <thead>
                 <tr>
-                    <th>Time</th>
                     <th>Date</th>
+                    <th>Time</th>
                     <th>Doctor’s Name</th>
                     <th>Doctor’s Photo</th>
                     <th>Status</th>
@@ -106,10 +106,10 @@ $appointments = $stmt->get_result();
             <tbody>
                 <?php while ($row = $appointments->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['time']); ?></td>
                     <td><?php echo htmlspecialchars($row['date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['time']); ?></td>
                     <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
-                    <td><img src="../images/<?php echo htmlspecialchars($row['doctor_photo']); ?>" alt="Doctor's Photo"></td>
+                    <td><img src="uploads/<?php echo htmlspecialchars($row['doctor_photo']); ?>" alt="Doctor's Photo"></td>
                     <td><span class="status <?php echo strtolower($row['status']); ?>"><?php echo htmlspecialchars($row['status']); ?></span></td>
                     <td><a href="cancel_appointment.php?id=<?php echo $row['id']; ?>" class="cancel-link">Cancel</a></td>
                 </tr>
