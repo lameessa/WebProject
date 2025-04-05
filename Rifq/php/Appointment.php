@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                         <textarea id="reason" name="reason" rows="4" required></textarea>
                     </div>
 
-                    <input type="hidden" name="patient_id" value="1234"> 
+                    <input type="hidden" name="patient_id" value="<?php echo $_SESSION['user_id']; ?>"> 
                     <button type="submit" id="buttonBooking">Submit Booking</button>
                 </form>
             </section>
