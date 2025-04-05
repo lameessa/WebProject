@@ -79,7 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h2>Login</h2>
         <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+      <form action="LoginN.php" method="POST">
+
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
 
