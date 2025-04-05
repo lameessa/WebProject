@@ -114,7 +114,7 @@ $conn->close();
 <header>
   <div class="mcontainer">
     <div class="logo">
-      <a href="../index.html">
+      <a href="../html/index.html">
         <img src="../images/logo.png" alt="Rifq Logo">
         <span id="rifq">Rifq</span><span id="clinic">Clinic</span>
       </a>
