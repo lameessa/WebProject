@@ -11,13 +11,13 @@ $database   = "Rifq";
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
-    die("❌ Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($_POST['firstName']) || empty($_POST['lastName']) || 
         empty($_POST['email'])     || empty($_POST['password'])) {
-        header("Location: SignupN.php?error=" . urlencode("Some data is missing!"));
+        header("Location: Signup.php?error=" . urlencode("Some data is missing!"));
         exit();
     }
 
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        header("Location: SignupN.php?error=" . urlencode("Email is already registered!"));
+        header("Location: Signup.php?error=" . urlencode("Email is already registered!"));
         exit();
     }
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $profilePic   = NULL;
 
         if (!isset($_FILES['profilePic']) || $_FILES['profilePic']['error'] !== 0) {
-            header("Location: SignupN.php?error=" . urlencode("You must upload a profile picture!"));
+            header("Location: Signup.php?error=" . urlencode("You must upload a profile picture!"));
             exit();
         }
 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $profilePicPath)) {
             $profilePic = $uniqueName;
         } else {
-            header("Location: SignupN.php?error=" . urlencode("Error uploading the picture!"));
+            header("Location: Signup.php?error=" . urlencode("Error uploading the picture!"));
             exit();
         }
 
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssss", $firstName, $lastName, $email, $password, $gender, $dob);
     } else {
-        header("Location: SignupN.php?error=" . urlencode("Unknown role!"));
+        header("Location: Signup.php?error=" . urlencode("Unknown role!"));
         exit();
     }
 
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         exit();
     } else {
-        header("Location: SignupN.php?error=" . urlencode("Error inserting data: " . $stmt->error));
+        header("Location: Signup.php?error=" . urlencode("Error inserting data: " . $stmt->error));
         exit();
     }
 
@@ -126,7 +126,7 @@ $conn->close();
   <h2>Sign Up</h2>
   <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
 
-  <form id="signup-form" action="SignupN.php" method="POST" enctype="multipart/form-data">
+  <form id="signup-form" action="Signup.php" method="POST" enctype="multipart/form-data">
     <div class="radio-container">
       <label>Select Role:</label>
       <input type="radio" id="patient" name="userType" value="patient" required>
