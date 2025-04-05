@@ -8,24 +8,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 session_start();
 include 'AuthCheck.php';
 
-/*
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
+
+if ( $_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
-*/
+
 
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// جلب التخصصات من قاعدة البيانات
+$patient_id = $_SESSION['user_id'];
+
 $specialties = [];
 $doctors = [];
 $selectedSpecialtyId = "";
 
-// جلب جميع التخصصات
+
 $sql = "SELECT id, speciality FROM Speciality";
 $result = $connection->query($sql);
 if ($result && $result->num_rows > 0) {
@@ -34,7 +35,7 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
-// إذا تم إرسال النموذج الأول (اختيار التخصص)
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
     $selectedSpecialtyId = $_POST["specialty"];
     $stmt = $connection->prepare("SELECT id, firstName, lastName FROM Doctor WHERE SpecialityID = ?");
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
         $doctors[] = $row;
     }
 } else {
-    // إذا لم يتم اختيار تخصص، جلب جميع الأطباء
+
     $sql = "SELECT id, firstName, lastName FROM Doctor";
     $result = $connection->query($sql);
     if ($result && $result->num_rows > 0) {
@@ -66,10 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
+                <a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"><span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">
-                <a href="index.html"><img src="../images/LogOut.PNG" alt="Log out"></a>
+                <a href="index.php<img src="../images/LogOut.PNG" alt="Log out"></a>
             </div>
         </div>
     </header>
@@ -91,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
 
         <div id="form-section" class="stats">
             <section class="banner_main">
-                <!-- النموذج الأول لاختيار التخصص -->
+                
                 <form id="specialty-form" class="main_form" method="POST" action="">
                     <div class="contactus">
                         <label for="specialty">Select Specialty:</label>
@@ -107,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                     </div>
                 </form>
 
-                <!-- النموذج الثاني لحجز الموعد -->
+               
                 <form id="appointment-form" class="main_form" method="POST" action="addAppointment.php">
                     <div class="contactus">
                         <label for="doctor">Select Doctor:</label>
@@ -139,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                         <textarea id="reason" name="reason" rows="4" required></textarea>
                     </div>
 
-                    <input type="hidden" name="patient_id" value="1234"> <!-- يتم تغييره لاحقًا من الجلسة -->
+                    <input type="hidden" name="patient_id" value="1234"> 
                     <button type="submit" id="buttonBooking">Submit Booking</button>
                 </form>
             </section>

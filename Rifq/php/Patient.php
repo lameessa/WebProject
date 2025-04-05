@@ -7,22 +7,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 session_start();
 include 'AuthCheck.php';
 
-/*
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
+
+if ($_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
- */
 
-// الاتصال بقاعدة البيانات
+
+
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$patient_id = 1234;;
+$patient_id = $_SESSION['user_id'];
 
-// جلب بيانات المريض
+
 $query = "SELECT firstName, lastName, emailAddress, DoB, Gender, id FROM Patient WHERE id = ?";
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $patient_id);
@@ -33,7 +33,7 @@ if (!$patient) {
     die("<h2>Error: Patient not found</h2>");
 }
 
-// جلب جميع المواعيد المرتبطة بالمريض بترتيب زمني
+
 $query = "SELECT A.id, A.date, A.time, D.firstName AS doctor_name, D.uniqueFileName AS doctor_photo, A.status 
           FROM Appointment A
           JOIN Doctor D ON A.DoctorID = D.id
@@ -58,7 +58,7 @@ $appointments = $stmt->get_result();
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo"> <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
+                <a href="index.php"><img src="../images/logo.png" alt="Rifq Logo"> <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">
                 <a href="logout.php"><img src="../images/LogOut.PNG" alt="Log out"></a>
@@ -85,7 +85,7 @@ $appointments = $stmt->get_result();
     <div class="appointments-container">
         <h2 class="section-title">My Appointments</h2>
         <div class="appointment-actions">
-            <a href="book_appointment.php" class="book-appointment">Book an appointment</a>
+            <a href="Appointment.php" class="book-appointment">Book an appointment</a>
         </div>
         <table class="appointments-table">
             <thead>
@@ -159,7 +159,7 @@ $appointments = $stmt->get_result();
         </div>
     </footer>
 </body>
-<link rel="stylesheet" href="../css/HFstyle.css">
+
 </html>
 
 
