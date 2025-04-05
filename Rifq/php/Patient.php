@@ -53,6 +53,11 @@ $appointments = $stmt->get_result();
     <title>Patient Homepage</title>
     <link rel="stylesheet" href="../css/HFstyle.css">
     <link rel="stylesheet" href="../css/Patient.css">
+<style>
+.appointment-actions {
+  margin-bottom: 50px !important;
+}
+</style>
 </head>
 <body>
     <header>

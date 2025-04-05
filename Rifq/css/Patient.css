@@ -131,8 +131,11 @@ body {
     box-shadow: 0 5px 15px rgba(208, 127, 0, 0.3);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    margin-bottom: 3rem;
+    margin-bottom: 8rem;
+   
 }
+
+
 
 .book-appointment:hover {
     background: #b35e2a;
