@@ -1,33 +1,21 @@
 <?php
-
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
-
-
 session_start();
 
-// إذا كان الطلب POST، نفذ عملية التحقق وتسجيل الدخول
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // بيانات الاتصال بقاعدة البيانات
     $servername = "localhost";
     $username   = "root";
     $password   = "root";
     $database   = "Rifq";
 
-    // الاتصال بقاعدة البيانات
     $conn = new mysqli($servername, $username, $password, $database);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // قراءة بيانات النموذج
     $email    = $_POST['email'];
     $pass     = $_POST['password'];
-    $userType = $_POST['userType']; // "doctor" أو "patient"
+    $userType = $_POST['userType'];
 
-    // اختيار الجدول المناسب حسب الدور
     if ($userType === "doctor") {
         $sql = "SELECT id, firstName, password FROM Doctor WHERE emailAddress = ?";
     } else {
@@ -39,38 +27,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // التحقق من وجود المستخدم
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        // التحقق من صحة كلمة المرور باستخدام التشفير
         if (password_verify($pass, $row['password'])) {
-            // حفظ بيانات الجلسة
-            $_SESSION['userID']    = $row['id'];
-            $_SESSION['userType']  = $userType;
+            $_SESSION['user_id']   = $row['id'];
+            $_SESSION['user_type'] = $userType;
             $_SESSION['firstName'] = $row['firstName'];
 
-            // توجيه المستخدم للصفحة المناسبة
             if ($userType === "doctor") {
-                header("Location: ../php/Doctor.php");
+                header("Location: Doctor.php");
             } else {
-                header("Location: ../php/Patient.php");
+                header("Location: Patient.php");
             }
             exit();
         } else {
-            // كلمة المرور خاطئة
-            header("Location: Login.php?error=" . urlencode("Invalid password!"));
+            header("Location: LoginN.php?error=" . urlencode("Invalid password!"));
             exit();
         }
     } else {
-        // لا يوجد مستخدم بهذا الإيميل
-        header("Location: Login.php?error=" . urlencode("Email not found!"));
+        header("Location: LoginN.php?error=" . urlencode("Email not found!"));
         exit();
     }
 
     $conn->close();
 }
-
-// في حال لم يكن POST أو بعد عرض الأخطاء، سيستمر العرض للجزء HTML أدناه
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,17 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-  
-    <link rel="stylesheet" href="HFstyle.css">
-    <link rel="stylesheet" href="LoginStyle.css">
+    <link rel="stylesheet" href="../css/HFstyle.css">
+    <link rel="stylesheet" href="../css/LoginStyle.css">
 </head>
 <body>
 
 <header>
     <div class="container">
         <div class="logo">
-            <!-- عدّل الرابط حسب مكان الصفحة الرئيسية لديك -->
-            <a href="../index.html">
+            <a href="../html/index.html">
                 <img src="../images/logo.png" alt="Rifq Logo">
                 <span id="rifq">Rifq</span><span id="clinic">Clinic</span>
             </a>
@@ -99,11 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="login-container">
     <div class="login-form">
         <h2>Login</h2>
-
-        <!-- مكان لعرض الخطأ إن وجد -->
         <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
 
-        <!-- نجعل action يشير لنفس الصفحة -->
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
@@ -126,8 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </div>
 
-<footer id="footer" class="footer ">
-    <!-- Footer Top -->
+<footer id="footer" class="footer">
     <div class="footer-top">
         <div class="container">
             <div class="row">
@@ -153,39 +127,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="col">
                     <h2>Contact Us</h2>
                     <ul class="social">
-                        <li><i class="icofont-facebook"><img src="../images/facebook-icon.png" alt="facebook">@Rifq_Clinic</i></li>
-                        <li><i class="icofont-x"><img src="../images/x-icon.png" alt="x">@Rifq_Clinic</i></li>
-                        <li><i class="icofont-instagram"><img src="../images/instagram-icon.png" alt="instagram">@Rifq_Clinic</i></li>
-                        <li><i class="icofont-gmail"><img src="../images/gmail-icon.png" alt="gmail">Rifq_Clinic@gmail.com</i></li>
-                        <li><i class="icofont-phone"><img src="../images/phone-icon.png" alt="phone">+966 555 123 456</i></li>
+                        <li><img src="../images/facebook-icon.png" alt="facebook">@Rifq_Clinic</li>
+                        <li><img src="../images/x-icon.png" alt="x">@Rifq_Clinic</li>
+                        <li><img src="../images/instagram-icon.png" alt="instagram">@Rifq_Clinic</li>
+                        <li><img src="../images/gmail-icon.png" alt="gmail">Rifq_Clinic@gmail.com</li>
+                        <li><img src="../images/phone-icon.png" alt="phone">+966 555 123 456</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ End Footer Top -->
-    <!-- Copyright -->
     <div class="copyright">
         <div class="container">
             <div class="row">
                 <div class="copyright-content">
-                    <p>© Copyright 2025  |  All Rights Reserved by <span>IT329</span> </p>
+                    <p>© Copyright 2025 | All Rights Reserved by <span>IT329</span></p>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ End Copyright -->
 </footer>
 
-<script src="../js/Login.js"></script>
-
 <script>
-  // لو فيه ?error=... في الرابط، نعرض الرسالة للمستخدم
   const params = new URLSearchParams(window.location.search);
   if (params.has('error')) {
     const errorText = decodeURIComponent(params.get('error'));
     document.getElementById('errorMsg').textContent = errorText;
-    // إزالة البارامتر من الرابط حتى لا يبقى بعد إعادة التحميل
     history.replaceState({}, "", window.location.pathname);
   }
 </script>
