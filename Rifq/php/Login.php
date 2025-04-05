@@ -41,11 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
             exit();
         } else {
-            header("Location: LoginN.php?error=" . urlencode("Invalid password!"));
+            header("Location: Login.php?error=" . urlencode("Invalid password!"));
             exit();
         }
     } else {
-        header("Location: LoginN.php?error=" . urlencode("Email not found!"));
+        header("Location: Login.php?error=" . urlencode("Email not found!"));
         exit();
     }
 
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h2>Login</h2>
         <div id="errorMsg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
 
-      <form action="LoginN.php" method="POST">
+      <form action="Login.php" method="POST">
 
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
