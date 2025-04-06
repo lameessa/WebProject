@@ -77,12 +77,12 @@ $appointments = $stmt->get_result();
         </div>
         <div class="page-banner-content">
             <div class="content-text">
-            <h1>Welcome <?php echo htmlspecialchars($patient['firstName']); ?>!</h1>
-            <p><strong>Name:</strong> <?php echo htmlspecialchars(($patient['firstName'] ?? 'Unknown') . ' ' . ($patient['lastName'] ?? '')); ?></p>
-            <p><strong>ID:</strong> <?php echo htmlspecialchars($patient['id'] ?? 'N/A'); ?></p>
-            <p><strong>Gender:</strong> <?php echo htmlspecialchars($patient['Gender'] ?? 'Not specified'); ?></p>
+            <h1>Welcome <?php echo $patient['firstName']; ?>!</h1>
+            <p><strong>Name:</strong> <?php echo ($patient['firstName'] ?? 'Unknown' . ' ' . ($patient['lastName'] ?? '')); ?></p>
+            <p><strong>ID:</strong> <?php echo $patient['id'] ?? 'N/A'; ?></p>
+            <p><strong>Gender:</strong> <?php echo $patient['Gender'] ?? 'Not specified'; ?></p>
             <p><strong>Date of Birth:</strong> <?php echo isset($patient['DoB']) ? date('j/n/Y', strtotime($patient['DoB'])) : 'Unknown'; ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($patient['emailAddress'] ?? 'No email available'); ?></p>
+            <p><strong>Email:</strong> <?php echo $patient['emailAddress'] ?? 'No email available'; ?></p>
             </div>
         </div>
     </div>
@@ -106,11 +106,11 @@ $appointments = $stmt->get_result();
             <tbody>
                 <?php while ($row = $appointments->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['date']); ?></td>
-                    <td><?php echo htmlspecialchars($row['time']); ?></td>
-                    <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
-                    <td><img src="uploads/<?php echo htmlspecialchars($row['doctor_photo']); ?>" alt="Doctor's Photo"></td>
-                    <td><span class="status <?php echo strtolower($row['status']); ?>"><?php echo htmlspecialchars($row['status']); ?></span></td>
+                    <td><?php echo $row['date']; ?></td>
+                    <td><?php echo $row['time']; ?></td>
+                    <td><?php echo $row['doctor_name']; ?></td>
+                    <td><img src="uploads/<?php echo $row['doctor_photo']; ?>" alt="Doctor's Photo"></td>
+                    <td><span class="status <?php echo strtolower($row['status']); ?>"><?php echo $row['status']; ?></span></td>
                     <td><a href="cancel_appointment.php?id=<?php echo $row['id']; ?>" class="cancel-link">Cancel</a></td>
                 </tr>
                 <?php endwhile; ?>

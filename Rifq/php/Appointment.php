@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
                             <option value="">-- Select Specialty --</option>
                             <?php foreach ($specialties as $spec): ?>
                                 <option value="<?= $spec['id'] ?>" <?= ($selectedSpecialtyId == $spec['id']) ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($spec['speciality']) ?>
+                                    <?= $spec['speciality'] ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
