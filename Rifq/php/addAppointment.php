@@ -30,11 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $reason = $_POST['reason'];
     $status = "Pending";
 
-    // تحويل التاريخ إلى صيغة datetime كاملة
-    $datetime = date("Y-m-d", strtotime($date));
 
     $stmt = $connection->prepare("INSERT INTO Appointment (DoctorID, PatientID, date, time, reason, status) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iissss", $doctor_id, $patient_id, $datetime, $time, $reason, $status);
+    $stmt->bind_param("iissss", $doctor_id, $patient_id, $date, $time, $reason, $status);
 
     if ($stmt->execute()) {
         // بعد الحجز، إعادة توجيه المستخدم إلى صفحة المريض برسالة

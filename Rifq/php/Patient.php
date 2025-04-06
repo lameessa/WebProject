@@ -106,7 +106,7 @@ $appointments = $stmt->get_result();
             <tbody>
                 <?php while ($row = $appointments->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo $row['date']; ?></td>
+                    <td><?php echo date('Y-m-d', strtotime($row['date'])); ?></td>
                     <td><?php echo $row['time']; ?></td>
                     <td><?php echo $row['doctor_name']; ?></td>
                     <td><img src="uploads/<?php echo $row['doctor_photo']; ?>" alt="Doctor's Photo"></td>
