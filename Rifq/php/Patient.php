@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <?php
 session_start();
 include 'AuthCheck.php';
-
 
 if ($_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
-
-
 
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
@@ -21,7 +13,6 @@ if (!$connection) {
 }
 
 $patient_id = $_SESSION['user_id'];
-
 
 $query = "SELECT firstName, lastName, emailAddress, DoB, Gender, id FROM Patient WHERE id = ?";
 $stmt = $connection->prepare($query);
@@ -32,7 +23,6 @@ $patient = $result->fetch_assoc();
 if (!$patient) {
     die("<h2>Error: Patient not found</h2>");
 }
-
 
 $query = "SELECT A.id, A.date, A.time, D.firstName AS doctor_name, D.uniqueFileName AS doctor_photo, A.status 
           FROM Appointment A
@@ -53,11 +43,19 @@ $appointments = $stmt->get_result();
     <title>Patient Homepage</title>
     <link rel="stylesheet" href="../css/HFstyle.css">
     <link rel="stylesheet" href="../css/Patient.css">
-<style>
-.appointment-actions {
-  margin-bottom: 50px !important;
-}
-</style>
+    <style>
+        .appointment-actions {
+            margin-bottom: 50px !important;
+        }
+        .cancel-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -77,12 +75,12 @@ $appointments = $stmt->get_result();
         </div>
         <div class="page-banner-content">
             <div class="content-text">
-            <h1>Welcome <?php echo $patient['firstName']; ?>!</h1>
-            <p><strong>Name:</strong> <?php echo ($patient['firstName'] ?? 'Unknown' . ' ' . ($patient['lastName'] ?? '')); ?></p>
-            <p><strong>ID:</strong> <?php echo $patient['id'] ?? 'N/A'; ?></p>
-            <p><strong>Gender:</strong> <?php echo $patient['Gender'] ?? 'Not specified'; ?></p>
-            <p><strong>Date of Birth:</strong> <?php echo isset($patient['DoB']) ? date('j/n/Y', strtotime($patient['DoB'])) : 'Unknown'; ?></p>
-            <p><strong>Email:</strong> <?php echo $patient['emailAddress'] ?? 'No email available'; ?></p>
+                <h1>Welcome <?php echo $patient['firstName']; ?>!</h1>
+                <p><strong>Name:</strong> <?php echo ($patient['firstName'] ?? 'Unknown') . ' ' . ($patient['lastName'] ?? ''); ?></p>
+                <p><strong>ID:</strong> <?php echo $patient['id'] ?? 'N/A'; ?></p>
+                <p><strong>Gender:</strong> <?php echo $patient['Gender'] ?? 'Not specified'; ?></p>
+                <p><strong>Date of Birth:</strong> <?php echo isset($patient['DoB']) ? date('j/n/Y', strtotime($patient['DoB'])) : 'Unknown'; ?></p>
+                <p><strong>Email:</strong> <?php echo $patient['emailAddress'] ?? 'No email available'; ?></p>
             </div>
         </div>
     </div>
@@ -105,13 +103,15 @@ $appointments = $stmt->get_result();
             </thead>
             <tbody>
                 <?php while ($row = $appointments->fetch_assoc()): ?>
-                <tr>
+                <tr data-id="<?php echo $row['id']; ?>">
                     <td><?php echo date('Y-m-d', strtotime($row['date'])); ?></td>
                     <td><?php echo $row['time']; ?></td>
                     <td><?php echo $row['doctor_name']; ?></td>
                     <td><img src="uploads/<?php echo $row['doctor_photo']; ?>" alt="Doctor's Photo"></td>
                     <td><span class="status <?php echo strtolower($row['status']); ?>"><?php echo $row['status']; ?></span></td>
-                    <td><a href="cancel_appointment.php?id=<?php echo $row['id']; ?>" class="cancel-link">Cancel</a></td>
+                    <td>
+                        <button class="cancel-btn" data-id="<?php echo $row['id']; ?>">Cancel</button>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
@@ -163,9 +163,31 @@ $appointments = $stmt->get_result();
             </div>
         </div>
     </footer>
+
+    <!-- jQuery + AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.cancel-btn').click(function(){
+            var row = $(this).closest('tr');
+            var appointmentId = $(this).data('id');
+
+            if(confirm("Are you sure you want to cancel this appointment?")){
+                $.ajax({
+                    url: 'cancel_appointment.php',
+                    type: 'POST',
+                    data: { id: appointmentId },
+                    success: function(response){
+                        if(response.trim() == 'true'){
+                            row.remove();
+                        } else {
+                            alert("Failed to cancel the appointment.");
+                        }
+                    }
+                });
+            }
+        });
+    });
+    </script>
 </body>
-
 </html>
-
-
-
