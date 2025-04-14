@@ -4,16 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
-
 session_start();
 include 'AuthCheck.php';
 
-
-if ( $_SESSION['user_type'] !== 'patient') {
+if ($_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
-
 
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
@@ -24,9 +21,8 @@ $patient_id = $_SESSION['user_id'];
 
 $specialties = [];
 $doctors = [];
-$selectedSpecialtyId = "";
 
-
+// جلب جميع التخصصات
 $sql = "SELECT id, speciality FROM Speciality";
 $result = $connection->query($sql);
 if ($result && $result->num_rows > 0) {
@@ -35,24 +31,12 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
-    $selectedSpecialtyId = $_POST["specialty"];
-    $stmt = $connection->prepare("SELECT id, firstName, lastName FROM Doctor WHERE SpecialityID = ?");
-    $stmt->bind_param("i", $selectedSpecialtyId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// جلب جميع الأطباء (للعرض الأولي)
+$sql = "SELECT id, firstName, lastName FROM Doctor";
+$result = $connection->query($sql);
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $doctors[] = $row;
-    }
-} else {
-
-    $sql = "SELECT id, firstName, lastName FROM Doctor";
-    $result = $connection->query($sql);
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $doctors[] = $row;
-        }
     }
 }
 ?>
@@ -62,6 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
     <meta charset="UTF-8">
     <title>Book Appointment</title>
     <link rel="stylesheet" href="../css/styleApoi.css">
+    <link rel="stylesheet" href="../css/HFstyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -92,32 +78,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
 
         <div id="form-section" class="stats">
             <section class="banner_main">
-                
-                <form id="specialty-form" class="main_form" method="POST" action="">
+                <form id="specialty-form" class="main_form">
                     <div class="contactus">
                         <label for="specialty">Select Specialty:</label>
                         <select id="specialty" name="specialty" required>
                             <option value="">-- Select Specialty --</option>
                             <?php foreach ($specialties as $spec): ?>
-                                <option value="<?= $spec['id'] ?>" <?= ($selectedSpecialtyId == $spec['id']) ? 'selected' : '' ?>>
+                                <option value="<?= $spec['id'] ?>">
                                     <?= $spec['speciality'] ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <button type="submit" name="update-doctors">Submit</button>
                     </div>
                 </form>
 
-               
                 <form id="appointment-form" class="main_form" method="POST" action="addAppointment.php">
                     <div class="contactus">
                         <label for="doctor">Select Doctor:</label>
-                        <!--
-                            We are not using a hidden input here because the doctor ID is sent directly  
-                            from the drop-down list by setting the option's value to the doctor's ID.  
-                            This way, when a doctor is selected, their ID is submitted directly  
-                            without needing an additional hidden input field.
-                        -->
                         <select id="doctor" name="doctor_id" required>
                             <option value="">Select a doctor...</option>
                             <?php
@@ -198,8 +175,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-doctors"])) {
             </div>
         </div>
     </footer>
+
+<script>
+$(document).ready(function() {
+    $('#specialty').change(function() {
+        var specialtyId = $(this).val();
+        $('#doctor').html('<option value="">Loading doctors...</option>');
+        
+        if (specialtyId) {
+            $.ajax({
+                url: 'getDoctorsBySpecialty.php',
+                type: 'POST',
+                data: {specialty_id: specialtyId},
+                dataType: 'json',
+                success: function(response) {
+                    $('#doctor').empty();
+                    
+                    if (response.error) {
+                        $('#doctor').append('<option value="">Error: ' + response.error + '</option>');
+                    } else if (response.message) {
+                        $('#doctor').append('<option value="">' + response.message + '</option>');
+                    } else {
+                        $('#doctor').append('<option value="">Select a doctor...</option>');
+                        $.each(response, function(key, doctor) {
+                            $('#doctor').append(
+                                '<option value="' + doctor.id + '">' + 
+                                doctor.firstName + ' ' + doctor.lastName + 
+                                '</option>'
+                            );
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#doctor').empty();
+                    $('#doctor').append('<option value="">Error loading doctors</option>');
+                    console.error("AJAX Error:", status, error);
+                    console.log("Full response:", xhr.responseText);
+                }
+            });
+        } else {
+            $('#doctor').empty();
+            $('#doctor').append('<option value="">Select a doctor...</option>');
+        }
+    });
+});
+</script>
 </body>
-<link rel="stylesheet" href="../css/HFstyle.css">
 </html>
 
 
