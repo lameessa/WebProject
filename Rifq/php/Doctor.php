@@ -43,6 +43,8 @@ if(!$connection){
   <title>Rifq | Doctor</title>
   <link rel="stylesheet" href="../css/docstyle.css">
   <link rel="stylesheet" href="../css/HFstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
   <header>
@@ -110,7 +112,7 @@ if(!$connection){
             echo "<td>";
                 //STATUS
                 if($row['status']==='Pending'){
-                    echo '<span style="color:orange;"> ‎  ‎Pending</span><br><a class="btn" href="Confirm.php?appointment_id=' .$row['id'] .'">Confirm</a>';
+                    echo '<span style="color:orange;"> ‎ ‎Pending</span><br><button class="confirm-btn btn" data-id="' .$row['id'] .'" data-patient="' .$patientID. '">Confirm</button>';
                 } elseif($row['status']==='Confirmed'){
                     echo '‎<span style="color:green;"> ‎ Confirmed</span><br><a class="btn" href="Medication.php?appointment_id=' .$row['id'] .'&patient_id=' .$patientID .'">Prescribe</a>';
                 }
@@ -230,6 +232,24 @@ if(!$connection){
       </div>
     </div>
   </footer>
+    <script>
+$(document).ready(function() {
+  $(".confirm-btn").click(function() {
+    const button = $(this);
+    const appointmentId = button.data("id");
+
+    $.get("ConfirmAjax.php", { appointment_id: appointmentId }, function(response) {
+      if (response.trim() === "true") {
+        const statusCell = button.closest("td");
+        statusCell.html('<span style="color:green;"> ‎ Confirmed</span><br><a class="btn" href="Medication.php?appointment_id=' + appointmentId + '&patient_id=' + button.closest("tr").find("td:eq(2)").text().trim() + '">Prescribe</a>');
+      } else {
+        alert("Failed to confirm appointment.");
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
 <?php

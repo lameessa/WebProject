@@ -56,7 +56,7 @@ $med_res = mysqli_query($conn, $med_query);
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="../images/logo.png" alt="Rifq Logo">
+                <a href="index.php"><img src="../images/logo.png" alt="Rifq Logo">
                 <span id="rifq">Rifq</span><span id="clinic">Clinic</span></a>
             </div>
             <div class="header-button">

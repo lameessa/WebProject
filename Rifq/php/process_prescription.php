@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+include 'AuthCheck.php';
 
 // Database Connection
 $conn = mysqli_connect("localhost", "root", "root", "Rifq"); 
@@ -10,10 +12,10 @@ if (!$conn) {
 }
 
 
-/*if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
+if ( $_SESSION['user_type'] !== 'doctor') {
     header("Location: ../index.php");
     exit();
-}*/
+}
 // Ensure form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $appointment_id = $_POST['appointment_id'];

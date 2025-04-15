@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <header>
     <div class="container">
         <div class="logo">
-            <a href="../html/index.html">
+            <a href="../php/index.php">
                 <img src="../images/logo.png" alt="Rifq Logo">
                 <span id="rifq">Rifq</span><span id="clinic">Clinic</span>
             </a>
