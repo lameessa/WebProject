@@ -5,17 +5,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 session_start();
-
-
 include 'AuthCheck.php';
 
-
-if ( $_SESSION['user_type'] !== 'patient') {
+if ($_SESSION['user_type'] !== 'patient') {
     header("Location: index.php");
     exit();
 }
-
-$patient_id = $_SESSION['user_id']; 
 
 $connection = mysqli_connect("localhost", "root", "root", "Rifq");
 if (!$connection) {
@@ -23,26 +18,39 @@ if (!$connection) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $doctor_id = $_POST['doctor_id'];
-    $patient_id = $_POST['patient_id'];
+    // التحقق من وجود جميع الحقول المطلوبة
+    $required_fields = ['doctor_id', 'patient_id', 'date', 'time', 'reason'];
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            header("Location: Appointment.php?error=missing_fields");
+            exit();
+        }
+    }
+
+    $doctor_id = (int)$_POST['doctor_id'];
+    $patient_id = (int)$_POST['patient_id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $reason = $_POST['reason'];
+    $reason = htmlspecialchars($_POST['reason']);
     $status = "Pending";
 
+    // التحقق من صحة التاريخ والوقت
+    if (!strtotime($date) || !strtotime($time)) {
+        header("Location: Appointment.php?error=invalid_date_time");
+        exit();
+    }
 
     $stmt = $connection->prepare("INSERT INTO Appointment (DoctorID, PatientID, date, time, reason, status) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iissss", $doctor_id, $patient_id, $date, $time, $reason, $status);
 
     if ($stmt->execute()) {
-        // بعد الحجز، إعادة توجيه المستخدم إلى صفحة المريض برسالة
         header("Location: Patient.php?msg=Appointment+booked+successfully");
         exit();
     } else {
-        echo "Error: " . $stmt->error;
+        header("Location: Appointment.php?error=database_error&message=" . urlencode($stmt->error));
+        exit();
     }
 } else {
-    // منع الوصول المباشر بدون POST
     header("Location: Appointment.php");
     exit();
 }
