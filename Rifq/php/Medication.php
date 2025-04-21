@@ -3,7 +3,7 @@
 session_start();
 
 // Database Connection
-$connection = mysqli_connect("localhost", "root", "root", "Rifq"); 
+include 'Connection,php';
 
 // Check if connection is successful
 if (!$connection) {

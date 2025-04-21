@@ -7,7 +7,7 @@ if ($_SESSION['user_type'] !== 'patient') {
     exit();
 }
 
-$connection = mysqli_connect("localhost", "root", "root", "Rifq");
+include 'Connection,php';
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }

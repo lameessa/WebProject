@@ -3,6 +3,7 @@
 session_start();
 
 // LOGIN
+include 'Connection,php';
 include 'AuthCheck.php';
 
 
@@ -17,7 +18,7 @@ $doctor_id = $_SESSION['user_id'];
 
 
 // CONNECT TO DATABASE
-$connection = mysqli_connect("localhost","root","root","Rifq");
+
 if(!$connection){
   die("Connection failed: ".mysqli_connect_error());
 } else {

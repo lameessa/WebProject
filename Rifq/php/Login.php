@@ -1,4 +1,6 @@
 <?php
+
+include 'Connection,php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -7,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password   = "root";
     $database   = "Rifq";
 
-    $connection = new mysqli($servername, $username, $password, $database);
+    
     if ($connection->connect_error) {
         die("Connection failed: " . $connection->connect_error);
     }
