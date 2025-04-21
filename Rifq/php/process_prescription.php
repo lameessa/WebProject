@@ -4,10 +4,10 @@ session_start();
 include 'AuthCheck.php';
 
 // Database Connection
-$conn = mysqli_connect("localhost", "root", "root", "Rifq"); 
+$connection = mysqli_connect("localhost", "root", "root", "Rifq"); 
 
 // Check if connection is successful
-if (!$conn) {
+if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
@@ -23,19 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Update appointment status to "Done"
     $update_query = "UPDATE appointment SET status='Done' WHERE id='$appointment_id'";
-    if (!mysqli_query($conn, $update_query)) {
-        die("Error updating appointment status: " . mysqli_error($conn));
+    if (!mysqli_query($connection, $update_query)) {
+        die("Error updating appointment status: " . mysqli_error($connection));
     }
 
     // Insert selected medications into the prescription table
     foreach ($medications as $medication_id) {
         $insert_query = "INSERT INTO prescription (AppointmentID, MedicationID) VALUES ('$appointment_id', '$medication_id')";
-        if (!mysqli_query($conn, $insert_query)) {
-            die("Error inserting prescription: " . mysqli_error($conn));
+        if (!mysqli_query($connection, $insert_query)) {
+            die("Error inserting prescription: " . mysqli_error($connection));
         }
     }
 
-    mysqli_close($conn);
+    mysqli_close($connection);
 
 header("Location: ../php/Doctor.php");
     exit();

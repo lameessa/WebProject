@@ -10,9 +10,9 @@ $username   = "root";
 $password   = "root";
 $database   = "Rifq";
 
-$conn = new mysqli($servername, $username, $password, $database);
-if ($conn->connect_error) {
-    header("Location: Signup.php?error=" . urlencode("❌ Connection failed: " . $conn->connect_error));
+$connection = new mysqli($servername, $username, $password, $database);
+if ($connection->connect_error) {
+    header("Location: Signup.php?error=" . urlencode("❌ Connection failed: " . $connection->connect_error));
     exit();
 }
 
@@ -36,9 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $checkIDSql = "SELECT id FROM Doctor WHERE id = ?
                    UNION
                    SELECT id FROM Patient WHERE id = ?";
-    $stmtID = $conn->prepare($checkIDSql);
+    $stmtID = $connection->prepare($checkIDSql);
     if (!$stmtID) {
-        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $conn->error));
+        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $connection->error));
         exit();
     }
     $stmtID->bind_param("ss", $nationalID, $nationalID);
@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $checkSql = "SELECT 'doctor' as userType FROM Doctor WHERE emailAddress = ?
                  UNION
                  SELECT 'patient' as userType FROM Patient WHERE emailAddress = ?";
-    $stmt = $conn->prepare($checkSql);
+    $stmt = $connection->prepare($checkSql);
     if (!$stmt) {
-        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $conn->error));
+        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $connection->error));
         exit();
     }
     $stmt->bind_param("ss", $email, $email);
@@ -88,9 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 4) إدخال بيانات الدكتور في قاعدة البيانات
     $sql = "INSERT INTO Doctor (id, firstName, lastName, emailAddress, password, SpecialityID, uniqueFileName)
             VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmtInsert = $conn->prepare($sql);
+    $stmtInsert = $connection->prepare($sql);
     if (!$stmtInsert) {
-        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $conn->error));
+        header("Location: Signup.php?error=" . urlencode("SQL Error: " . $connection->error));
         exit();
     }
     $stmtInsert->bind_param("issssis", $nationalID, $firstName, $lastName, $email, $passwordHash, $specialityID, $uniqueName);
@@ -107,5 +107,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     $stmtInsert->close();
 }
-$conn->close();
+$connection->close();
 ?>
