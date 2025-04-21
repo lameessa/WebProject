@@ -12,7 +12,10 @@ if ($_SESSION['user_type'] !== 'patient') {
     exit();
 }
 
-include 'Connection.php';
+$connection = mysqli_connect("localhost", "root", "root", "Rifq");
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 $patient_id = $_SESSION['user_id'];
 
