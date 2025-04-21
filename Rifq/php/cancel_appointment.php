@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$connection = mysqli_connect("localhost", "root", "root", "Rifq");
+include 'Connection.php';
+
 if (!$connection) {
     echo "false";
     exit();

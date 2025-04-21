@@ -4,7 +4,7 @@ session_start();
 include 'AuthCheck.php';
 
 // Database Connection
-$connection = mysqli_connect("localhost", "root", "root", "Rifq"); 
+include 'Connection.php';
 
 // Check if connection is successful
 if (!$connection) {

@@ -4,13 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// الاتصال بقاعدة البيانات
-$servername = "localhost";
-$username   = "root";
-$password   = "root";
-$database   = "Rifq";
 
-$connection = new mysqli($servername, $username, $password, $database);
+include 'Connection.php';
 if ($connection->connect_error) {
     header("Location: Signup.php?error=" . urlencode("❌ Connection failed: " . $connection->connect_error));
     exit();
