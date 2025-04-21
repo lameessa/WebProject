@@ -13,7 +13,7 @@ if(!isset($_GET['appointment_id'])) {
 $appointmentID = $_GET['appointment_id'];
 
 // CONNECT
-$connection = mysqli_connect("localhost","root","root","Rifq");
+include 'Connection.php';
 if(!$connection){
   die("Connection failed: ".mysqli_connect_error());
 }
