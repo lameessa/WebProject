@@ -7,17 +7,17 @@ if ($_SESSION['user_type'] !== 'doctor') {
 }
 
 if (isset($_GET['appointment_id'])) {
-    $conn = mysqli_connect("localhost", "root", "root", "Rifq");
-    if (!$conn) {
+    $connection = mysqli_connect("localhost", "root", "root", "Rifq");
+    if (!$connection) {
         echo "false";
         exit();
     }
 
     $appointment_id = $_GET['appointment_id'];
     $update = "UPDATE Appointment SET status='Confirmed' WHERE id='$appointment_id'";
-    echo mysqli_query($conn, $update) ? "true" : "false";
+    echo mysqli_query($connection, $update) ? "true" : "false";
 
-    mysqli_close($conn);
+    mysqli_close($connection);
 } else {
     echo "false";
 }

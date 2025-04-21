@@ -3,10 +3,10 @@
 session_start();
 
 // Database Connection
-$conn = mysqli_connect("localhost", "root", "root", "Rifq"); 
+$connection = mysqli_connect("localhost", "root", "root", "Rifq"); 
 
 // Check if connection is successful
-if (!$conn) {
+if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
@@ -31,7 +31,7 @@ $query = "SELECT firstName, lastName, Gender,
           FROM patient
           WHERE id = '$patient_id'";
 
-$res = mysqli_query($conn, $query);
+$res = mysqli_query($connection, $query);
 $patient = mysqli_fetch_assoc($res);
 
 if (!$patient) {
@@ -40,7 +40,7 @@ if (!$patient) {
 
 // Retrieve available medications
 $med_query = "SELECT * FROM medication";
-$med_res = mysqli_query($conn, $med_query);
+$med_res = mysqli_query($connection, $med_query);
 ?>
 
 <!DOCTYPE html>
@@ -165,6 +165,6 @@ $med_res = mysqli_query($conn, $med_query);
 </html>
 
 <?php
-mysqli_close($conn);
+mysqli_close($connection);
 ?>
 

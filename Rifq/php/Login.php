@@ -7,9 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password   = "root";
     $database   = "Rifq";
 
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    $connection = new mysqli($servername, $username, $password, $database);
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
     }
 
     $email    = $_POST['email'];
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    $conn->close();
+    $connection->close();
 }
 ?>
 <!DOCTYPE html>
