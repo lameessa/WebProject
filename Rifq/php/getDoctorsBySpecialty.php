@@ -27,7 +27,6 @@ header('Content-Type: application/json');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["specialty_id"])) {
     $selectedSpecialtyId = (int)$_POST["specialty_id"];
     
-    // استعلام أكثر أمانًا وتحكمًا
     $query = "SELECT id, firstName, lastName FROM Doctor WHERE SpecialityID = ?";
     $stmt = $connection->prepare($query);
     
@@ -47,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["specialty_id"])) {
     $doctors = [];
     
     while ($row = $result->fetch_assoc()) {
-        // التأكد من أن الحقول متطابقة مع قاعدة البيانات
         $doctor = [
             'id' => $row['id'],
             'firstName' => $row['firstName'],

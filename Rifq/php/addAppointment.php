@@ -18,7 +18,6 @@ if (!$connection) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // التحقق من وجود جميع الحقول المطلوبة
     $required_fields = ['doctor_id', 'patient_id', 'date', 'time', 'reason'];
     foreach ($required_fields as $field) {
         if (empty($_POST[$field])) {
@@ -31,10 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $patient_id = (int)$_POST['patient_id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $reason = htmlspecialchars($_POST['reason']);
+    $reason = $_POST['reason'];
     $status = "Pending";
 
-    // التحقق من صحة التاريخ والوقت
     if (!strtotime($date) || !strtotime($time)) {
         header("Location: Appointment.php?error=invalid_date_time");
         exit();

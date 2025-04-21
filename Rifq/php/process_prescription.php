@@ -13,7 +13,7 @@ if (!$conn) {
 
 
 if ( $_SESSION['user_type'] !== 'doctor') {
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit();
 }
 // Ensure form submission

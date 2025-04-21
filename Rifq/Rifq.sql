@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 05, 2025 at 05:51 PM
+-- Generation Time: Apr 21, 2025 at 12:07 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -42,9 +42,11 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`id`, `PatientID`, `DoctorID`, `date`, `time`, `reason`, `status`) VALUES
-(1, 1234, 1, '2025-02-14 00:00:00', '10:00:00', 'Routine check-up', 'Confirmed'),
-(2, 1234, 2, '2025-05-20 00:00:00', '15:00:00', 'Follow-up', 'Pending'),
-(3, 1235, 3, '2025-07-16 00:00:00', '17:00:00', 'Flu symptoms', 'Done');
+(4, 1122, 2244, '2025-05-20 00:00:00', '15:30:00', 'Routine monthly checkup', 'Pending'),
+(5, 1122, 1001, '2025-06-15 00:00:00', '12:00:00', 'Concern about unusual movements or behavior', 'Confirmed'),
+(6, 3030, 1001, '2025-05-25 00:00:00', '14:45:00', 'Worried about balance and head tilting', 'Done'),
+(7, 3030, 3303, '2025-06-20 00:00:00', '15:00:00', 'Worried about lack of energy and appetite.', 'Pending'),
+(8, 1114, 2244, '2025-05-19 00:00:00', '10:30:00', 'Routine check-up and vaccine update', 'Confirmed');
 
 -- --------------------------------------------------------
 
@@ -67,9 +69,9 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `firstName`, `lastName`, `uniqueFileName`, `SpecialityID`, `emailAddress`, `password`) VALUES
-(1, 'Saleh', 'Abdullah', 'doctor1.png', 1, 'saleh@example.com', '$2y$10$tPrZk4bpvSp8v4Gea8ML0OnkkI9BeXzIH7DKGhnF/BaPK7tz/XNpa'),
-(2, 'Sara', 'Ahmad', 'doctor2.png', 2, 'sara@example.com', '$2y$10$6eWvRp63ikytGEdnhq5W7uPsk7nTf3L6XN4Gpe6KKaXvoU07UYxje'),
-(3, 'Lulu', 'Mohamed', 'doctor3.png', 3, 'lulu@example.com', '$2y$10$2qFb07zK.LtHcNFpDCpefuEvOKPOp2FOmXJAPuZ.PvYzk9CnME1uK');
+(1001, 'Saleh', 'Abdullah', '68062273103737.02198081.png', 4, 'saleh@gmail.com', '$2y$10$KppHtlTkK1fe5MdL4VzcGuzVXoXUPnPI7Bcnuf7uVyws4ByCHiPP2'),
+(2244, 'Sara', 'Ahmad', '68062351110dc9.73994000.png', 1, 'sara@gmail.com', '$2y$10$/c9i/ZXpesNAANaXHvHD.OFDeKOPQ90a2MzFeEX9wr0VF9CN7mrg.'),
+(3303, 'Lulu', 'Mohammad', '680623a0b27de4.84531770.png', 2, 'lulu@gmail.com', '$2y$10$YlynlBVBYcqa2t.0bKozoeqsr1TNK88zQpsmkILQGI6snJBHdbZIq');
 
 -- --------------------------------------------------------
 
@@ -113,9 +115,9 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `firstName`, `lastName`, `Gender`, `DoB`, `emailAddress`, `password`) VALUES
-(1234, 'Blue', 'Barron', 'Male', '2014-01-01', 'email@example.com', '$2y$10$y6hsAiMbFtLUUtPzKPv6QO.Zhn6rPlVq34kg5Xf6WdMkz0fxZ1t7C'),
-(1235, 'Meme', 'Smith', 'Female', '2024-02-23', 'meme@example.com', '$2y$10$3e7UZR/5dNzgo7.W0HCT6Od4FRdu1f8XNsk8fokT5Oc.AAx1N38OO'),
-(1236, 'Koko', 'Ali', 'Male', '2020-07-16', 'koko@example.com', '$2y$10$q0k0s9Et5Y3TYuOE5ezZeuND8BkrCG2Eoqt14AhUhqLaZguQeIbPe');
+(1114, 'Coco', 'Ali', 'Female', '2022-07-16', 'coco@gmail.com', '$2y$10$/VMLK5quPkm7/ORAzJXv4e69SKVSerpf914C4F6iaoDHSLH4C8Drm'),
+(1122, 'Blue', 'Barron', 'Male', '2014-01-01', 'blue@gmail.com', '$2y$10$1bkqIlI./Ba7AaPxHJ9Wi.NRqe3SG7Ku7fhLLP0bVI0jdAFrBJXAi'),
+(3030, 'Meme', 'Smith', 'Female', '2024-02-23', 'meme@gmail.com', '$2y$10$doixKG5g/aKbbIVtq6sDcuAHj4v8MJPs8ElmxQsqJW0vbrT/k6aFC');
 
 -- --------------------------------------------------------
 
@@ -134,9 +136,8 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`id`, `AppointmentID`, `MedicationID`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+(4, 6, 2),
+(5, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ ALTER TABLE `speciality`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `medication`
@@ -226,7 +227,7 @@ ALTER TABLE `medication`
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `speciality`

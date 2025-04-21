@@ -22,7 +22,6 @@ $patient_id = $_SESSION['user_id'];
 $specialties = [];
 $doctors = [];
 
-// جلب جميع التخصصات
 $sql = "SELECT id, speciality FROM Speciality";
 $result = $connection->query($sql);
 if ($result && $result->num_rows > 0) {
@@ -31,7 +30,6 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
-// جلب جميع الأطباء (للعرض الأولي)
 $sql = "SELECT id, firstName, lastName FROM Doctor";
 $result = $connection->query($sql);
 if ($result && $result->num_rows > 0) {
