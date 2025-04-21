@@ -7,7 +7,7 @@ if ($_SESSION['user_type'] !== 'doctor') {
 }
 
 if (isset($_GET['appointment_id'])) {
-    $connection = mysqli_connect("localhost", "root", "root", "Rifq");
+include 'Connection.php';
     if (!$connection) {
         echo "false";
         exit();
